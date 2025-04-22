@@ -2,7 +2,7 @@
 @import url("common.css");
 
 body {
-  color: var(--color-font-login);
+  color: var(--color-text-login);
 }
 
 main {
@@ -100,4 +100,18 @@ main {
 
 .text--url {
   color: var(--color-primary)
+}
+
+@media screen and (max-width: 768px) {
+
+  main {
+    max-width: 400px;
+  }
+
+  .container {
+    max-width: 400px;
+    min-width: 375px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
 }

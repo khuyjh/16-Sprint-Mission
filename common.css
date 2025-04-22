@@ -18,10 +18,11 @@
     --color-background-blue: #cfe5ff;
     --color-background-dark: #111827;
     --color-text-light: #e5e7eb;
-    --color-text-grey: #9ca3af;
+    --color-text-grey400: #9ca3af;
+    --color-text-grey700: #374151;
     --color-input: #f3f4f6;
     --color-white: #ffffff;
-    --color-font-login: #1f2937;
+    --color-text-login: #1f2937;
   
     /* Typography */
     --font-primary: "Pretendard-Regular", sans-serif;
@@ -39,8 +40,14 @@ body {
     line-height: 1.5;
 }
 
+/* br 태그를 쓰지 않고 디스플레이 크기에 따라 문장 단위로 줄바꿈을 유지하기 위해 사용 */
+.text-nowrap {
+    display: inline-block;
+}
+
 .btn--interactions {
     cursor: pointer;
+    background-color: var(--color-primary);
 }
 
 .btn--interactions:hover {

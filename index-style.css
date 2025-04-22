@@ -1,6 +1,10 @@
 @import url("reset.css");
 @import url("common.css");
 
+body {
+    background-color: var(--color-background-light);
+}
+
 header {
     position: sticky;
     top: 0;
@@ -12,7 +16,6 @@ header {
     justify-content: space-between;
     align-items: center;
     max-width: 1520px;
-    min-width: 820px;
     height: 70px;
     padding: 9px 200px;
     margin: 0 auto;
@@ -41,7 +44,6 @@ header {
     display: inline-block;
     width: 128px;
     height: 48px;
-    background-color: var(--color-primary);
     text-decoration: none;
     color: var(--color-white);
     padding: 12px 20px;
@@ -57,7 +59,8 @@ header {
 }
 
 h2 {
-    font-size: max(2vw, 32px); /*둘 중 브라우저 크기에 따라 큰 값을 적용*/
+    color: var(--color-text-grey700);
+    font-size: 40px;
     font-weight: 700;
     line-height: 140%;
     margin: 0;
@@ -95,16 +98,18 @@ h2 {
     display: inline-block;
     width: 357px;
     height: 56px;
-    background-color: var(--color-primary);
     text-decoration: none;
     color: var(--color-white);
+    font-size: 18px;
+    font-weight: 500;
     padding: 16px 124px;
     text-align: center;
     border-radius: 40px;
+    line-height: 1.2;
 }
 
 .img--hero, .img--closing {
-    max-width: 100%;
+    width: 100%;
     flex: 1 1 0;
     object-fit: cover;
 }
@@ -115,9 +120,7 @@ h2 {
 }
 
 .container--white {
-    background-color: var(--color-background-light);
     max-width: 988px;
-    height: 444px;
     display: flex;
     border-radius: 12px;
     gap: 64px;
@@ -129,9 +132,8 @@ h2 {
 }
 
 .img--main {
-    width: 579px;
-    height: 444px;
-    flex: 1 1 auto;
+    width: 100%;
+    flex: 0 1 auto;
     object-fit: cover;
 }
 
@@ -141,6 +143,7 @@ h2 {
     justify-content: center;
     padding-right: 24px;
     flex: 1 1 auto;
+    gap: 12px;
 }
 
 .container--white.align-right {
@@ -152,7 +155,7 @@ h2 {
     color: var(--color-primary);
     font-weight: 700;
     line-height: 26px;
-    font-size: max(0.9vw, 14px);
+    font-size: 18px;
 }
 
 .container__description.align-right {
@@ -161,15 +164,22 @@ h2 {
 }
 
 .description--main {
+    color: var(--color-text-grey700);
     font-weight: 500;
     line-height: 32px;
-    font-size: max(1.23vw, 20px);
+    font-size: 21px;
+    margin-top:12px;
 }
 
 footer {
     background-color: var(--color-background-dark);
     height: 160px;
-    padding: 32px calc((100% - 1120px) / 2); /*전체 배경 - width 좌우 패딩이니까 2로 나눔*/
+}
+
+.container--footer {
+    max-width: 1120px;
+    padding: 32px 0;
+    margin: 0 auto;
     display: flex;
     font-weight: 400;
     font-size: 16px;
@@ -177,7 +187,7 @@ footer {
 }
 
 .copyright {
-    color: var(--color-text-grey);
+    color: var(--color-text-grey400);
     margin: 0;
     flex: 0 1 auto;
 }
@@ -198,4 +208,123 @@ footer {
   display: flex;
   flex: 0 1 auto;
   gap:12px;
+}
+
+/* 태블릿 사이즈 */
+@media (max-width: 1200px) {
+
+    .container--header {
+        padding: 9px 24px;
+    }
+    
+    .hero, .closing {
+        height: 100%;
+        align-items: center;
+    }
+
+    .container--hero {
+        flex-direction: column;
+        height: 800px;
+    }
+
+    .container--closing {
+        flex-direction: column;
+        height: 950px;
+    }
+
+    .hero__content {
+        align-items: center;
+        margin-top: 84px;
+        flex-grow: 0;
+        text-align: center;
+    }
+
+    .img--hero, .img--closing {
+        flex-grow: 0;
+    }
+
+    .closing__description {
+        text-align: center;
+        flex-grow: 0;
+        margin-top: 200px;
+    }
+
+    .container--white {
+        flex-direction: column;
+        gap: 24px;
+        margin: 56px 24px;
+        max-width: 100%;
+    }
+    
+    .container--white.align-right {
+        flex-direction: column-reverse;
+    }
+
+    .container--white:nth-child(2) {
+        margin-top: 24px; /*흰배경 섹션 중 첫번째 섹션에만 윗 마진을 다르게 주기위해*/
+    }
+
+    .container--footer {
+        padding: 32px 104px;
+    }
+}
+
+/* 모바일 사이즈 */
+@media screen and (max-width: 768px) {
+
+    body {
+        max-width: 400px;
+        min-width: 375px;
+    }
+
+    .container {
+        /* max-width: 400px; */
+    }
+
+    .container--header {
+        padding: 9px 16px;
+    }
+
+    .container--hero, .container--closing {
+        height: 540px;
+    }
+
+    .hero__content {
+        margin-top: 48px;
+    }
+
+    .btn--hero {
+        width: 240px;
+        height: 48px;
+        padding: 12px 71px;
+    }
+
+    .container--white {
+        padding: 0 16px;
+        margin: 40px auto;
+    }
+
+    .container--white:nth-child(2) {
+        margin-top: 52px; /*흰배경 섹션 중 첫번째 섹션에만 윗 마진을 다르게 주기위해*/
+    }
+
+    .closing__description {
+        margin-top: 120px;
+    }
+
+    .container--footer {
+        /* margin: 0  여기부터*/
+        height: 100%;
+        padding: 32px;
+        flex-wrap: wrap;
+        align-content: space-between;
+    }
+
+    .footer__urls {
+        justify-content: flex-start;
+    }
+
+    .copyright {
+        order: 2;
+    }
 }
