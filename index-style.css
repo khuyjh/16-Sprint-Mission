@@ -262,7 +262,7 @@ footer {
     flex-direction: column;
     gap: 24px;
     margin: 56px 24px;
-    max-width: ;
+    max-width: 100%;
   }
 
   .container--white.align-right {
