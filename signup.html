@@ -1,56 +1,120 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입</title>
-  <link rel="stylesheet" href="login-signup-style.css">
-</head>
-<body>
-  <main>
-    <div class="container container--home">
-      <img src="img/panda-face_large.svg" alt="푸른 배경에 판다얼굴이 있는 판다마켓의 로고입니다.">
-      <a href="/" class="btn btn--home">판다마켓</a>
-    </div>
-    <form action="/" method="post" class="container container--form">
-      <label for="email" class="form__label">이메일</label>
-      <input id="email" name="email" type="email" required autocomplete="email" placeholder="이메일" class="form__input">
-      
-      <label for="nickname" class="form__label">닉네임</label>
-      <input id="nickname" name="nickname" type="text" required placeholder="닉네임" class="form__input">
-
-      <label for="password" class="form__label">비밀번호</label>
-      <div class="input--password">
-        <input id="password" name="password" type="password" required autocomplete="password" placeholder="비밀번호" class="form__input">
-        <button type="button" class="btn btn--visibility-off" aria-label="비밀번호 표시" aria-pressed="false">
-          <img src="img/btn_visibility_off.svg" alt="비밀번호를 보이지 않게끔 설정하는 눈에 빗금이 쳐진 아이콘입니다." class="form__img">
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/login-signup-style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container container--home">
+        <img
+          src="assets/logo/panda-face_large.svg"
+          alt="푸른 배경에 판다얼굴이 있는 판다마켓의 로고입니다."
+          class="logo-large"
+        />
+        <a href="/" class="btn btn--home">판다마켓</a>
       </div>
+      <form action="/" method="post" class="container container--form">
+        <label for="email" class="form__label">이메일</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          placeholder="이메일을 입력해주세요"
+          class="form__input"
+        />
 
-      <label for="password" class="form__label">비밀번호 확인</label>
-      <div class="input--password">
-        <input id="password" name="password" type="password" required autocomplete="password" placeholder="비밀번호 확인" class="form__input">
-        <button type="button" class="btn btn--visibility-off" aria-label="비밀번호 표시" aria-pressed="false">
-          <img src="img/btn_visibility_off.svg" alt="비밀번호를 보이지 않게끔 설정하는 눈에 빗금이 쳐진 아이콘입니다." class="form__img">
-        </button>
-      </div>
+        <label for="nickname" class="form__label">닉네임</label>
+        <input
+          id="nickname"
+          name="nickname"
+          type="text"
+          required
+          placeholder="닉네임을 입력해주세요"
+          class="form__input"
+        />
 
-      <button type="submit" class="btn btn--interactions">회원가입</button>
-    </form>
-    <div class="container container--easy-login">
-      간편 로그인하기
-      <div class="container container--icons">
-        <a rel="noopener noreferrer" href="https://www.google.com/">
-          <img src="img/ic_google.svg" alt="흰 바탕에 대문자 G가 있는 google의 로고입니다" class="btn easy-login__icon">
-        </a>
-        <a rel="noopener noreferrer" href="https://www.kakaocorp.com/page/" class="btn easy-login__icon">
-          <img src="img/ic_kakaotalk.svg" alt="노란 바탕에 검은 말풍선이 있는 카카오톡의 로고입니다">
-        </a>
+        <label for="password" class="form__label">비밀번호</label>
+        <div class="input--password">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autocomplete="password"
+            placeholder="비밀번호를 입력해주세요"
+            class="form__input"
+          />
+          <button
+            type="button"
+            class="btn btn--visibility-off"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+          >
+            <img
+              src="assets/icons/btn_visibility_off.svg"
+              alt="비밀번호를 보이지 않게끔 설정하는 눈에 빗금이 쳐진 아이콘입니다."
+              class="form__img"
+            />
+          </button>
+        </div>
+
+        <label for="password" class="form__label">비밀번호 확인</label>
+        <div class="input--password">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autocomplete="password"
+            placeholder="비밀번호를 재입력해주세요"
+            class="form__input"
+          />
+          <button
+            type="button"
+            class="btn btn--visibility-off"
+            aria-label="비밀번호 표시"
+            aria-pressed="false"
+          >
+            <img
+              src="assets/icons/btn_visibility_off.svg"
+              alt="비밀번호를 보이지 않게끔 설정하는 눈에 빗금이 쳐진 아이콘입니다."
+              class="form__img"
+            />
+          </button>
+        </div>
+
+        <button type="submit" class="btn btn--interactions">회원가입</button>
+      </form>
+      <div class="container container--easy-login">
+        간편 로그인하기
+        <div class="container container--icons">
+          <a rel="noopener noreferrer" href="https://www.google.com/">
+            <img
+              src="assets/icons/ic_google.svg"
+              alt="흰 바탕에 대문자 G가 있는 google의 로고입니다"
+              class="btn easy-login__icon"
+            />
+          </a>
+          <a
+            rel="noopener noreferrer"
+            href="https://www.kakaocorp.com/page/"
+            class="btn easy-login__icon"
+          >
+            <img
+              src="assets/icons/ic_kakaotalk.svg"
+              alt="노란 바탕에 검은 말풍선이 있는 카카오톡의 로고입니다"
+            />
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="login-link">
-      이미 회원이신가요? <a class="text--url" href="login.html">로그인</a>
-    </div>
-  </main>
-</body>
+      <div class="login-link">
+        이미 회원이신가요? <a class="text--url" href="login.html">로그인</a>
+      </div>
+    </main>
+  </body>
 </html>

@@ -2,7 +2,7 @@
 @import url("common.css");
 
 body {
-  color: var(--color-font-login);
+  color: var(--color-text-login);
 }
 
 main {
@@ -16,14 +16,16 @@ main {
   align-items: center;
   gap: 22px;
   margin-bottom: 40px;
+
+  min-width: 0;
 }
 
 .btn--home {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 66px;
-    font-family: var(--font-secondary);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 66px;
+  font-family: var(--font-secondary);
 }
 
 .form__label {
@@ -59,7 +61,6 @@ main {
 
 .btn--interactions {
   display: inline-block;
-  background-color: var(--color-primary);
   color: var(--color-input);
   text-align: center;
   font-weight: 500;
@@ -82,7 +83,7 @@ main {
   padding: 16px 23px;
   border-radius: 8px;
   margin: 24px 0;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   letter-spacing: 0;
 }
@@ -92,12 +93,54 @@ main {
   gap: 16px;
 }
 
-.signup-link, .login-link {
+.signup-link,
+.login-link {
   text-align: center;
   font-weight: 500;
   font-size: 14px;
 }
 
 .text--url {
-  color: var(--color-primary)
+  color: var(--color-primary);
+}
+
+/* 모바일 사이즈 */
+@media screen and (max-width: 768px) {
+  main {
+    min-width: 375px;
+    width: 100%;
+    margin-top: 80px;
+    padding: 0 16px;
+  }
+
+  .container {
+    max-width: 400px;
+    min-width: 0;
+    margin: 24px auto;
+  }
+
+  .container--home {
+    gap: 10px;
+  }
+
+  .logo-large {
+    width: 52px;
+  }
+
+  .btn--home {
+    font-size: 42px;
+  }
+
+  .form__input {
+    margin: 8px 0 16px;
+  }
+
+  .form__label {
+    font-size: 14px;
+  }
+
+  .container--icons {
+    margin: 0;
+    padding: 0;
+  }
 }

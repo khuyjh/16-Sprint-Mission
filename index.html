@@ -1,121 +1,221 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:url"
+      content="https://pandamarket-sprint-yjh.netlify.app/"
+    />
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="img/panda-market_thumbnail.png" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
     <title>판다마켓</title>
-    <link rel="stylesheet" href="index-style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/index-style.css" />
+  </head>
+  <body>
     <header>
-        <div class="container container--header">
-          <div class="header__btn--home">
-            <img src="img/panda-face_small.svg" alt="판다마켓 로고" class="header__logo">
-            <a href="/" class="btn btn--home" role="button" aria-label="판다마켓 홈으로 이동합니다.">
-              판다마켓
-            </a>
-          </div>
-          <a href="/login.html" class="btn btn--login btn--interactions" role="button" aria-label="로그인 페이지로 이동합니다.">
-            로그인
+      <div class="container container--header">
+        <div class="header__btn--home">
+          <img
+            src="assets/logo/panda-face_small.svg"
+            alt="판다마켓 로고"
+            class="header__logo"
+          />
+          <a
+            href="/"
+            class="btn btn--home"
+            role="button"
+            aria-label="판다마켓 홈으로 이동합니다."
+          >
+            판다마켓
           </a>
         </div>
+        <a
+          href="/login.html"
+          class="btn btn--login btn--interactions"
+          role="button"
+          aria-label="로그인 페이지로 이동합니다."
+        >
+          로그인
+        </a>
+      </div>
     </header>
+
     <main>
       <section class="hero">
         <div class="container container--hero">
           <div class="hero__content">
+            <!-- prettier-ignore -->
             <h2>
-              일상의 모든 물건을<br>
+              일상의 모든 물건을
               거래해 보세요
             </h2>
-            <a href="/items.html" class="btn btn--hero btn--interactions" role="button" aria-label="물품 확인 페이지로 이동합니다.">
+            <a
+              href="/items.html"
+              class="btn btn--hero btn--interactions"
+              role="button"
+              aria-label="물품 확인 페이지로 이동합니다."
+            >
               구경하러 가기
             </a>
           </div>
-          <img src="img/Img_home_top.png" alt="장바구니를 메고있는 판다가 건물과 나무 사이에 서 있는 이미지" class="img--hero">
+          <img
+            src="assets/img/Img_home_top.png"
+            alt="장바구니를 메고있는 판다가 건물과 나무 사이에 서 있는 이미지"
+            class="img--hero"
+          />
+          <!-- srcset="img/Img_home_top.png 746w, img/Img_home_top_small.png 560w"
+          sizes="100%" -->
         </div>
       </section>
 
       <section class="container container--white">
-        <img src="img/Img_home_01.png" alt="판다 두 마리가 인기상품 초록색 티셔츠를 보며 하트를 날리는 이미지" class="img--main">
-        <div class="container__description">
+        <img
+          src="assets/img/Img_home_01.png"
+          alt="판다 두 마리가 인기상품 초록색 티셔츠를 보며 하트를 날리는 이미지"
+          class="img--main"
+        />
+        <!-- srcset="img/Img_home_01.png 588w, img/Img_home_01_large.png 1176w"
+        sizes="(max-width: 1200px) 100vw, 50vw" -->
+        <div class="container container__description">
           <p class="main__title">Hot item</p>
-          <h2>
-            인기 상품을<br>
-            확인해 보세요
-          </h2>
+          <h2>인기 상품을 확인해 보세요</h2>
           <p class="description--main">
-            가장 HOT한 중고거래 물품을<br>
+            가장 HOT한 중고거래 물품을<br />
             판다 마켓에서 확인해 보세요
           </p>
         </div>
       </section>
 
       <section class="container container--white align-right">
-        <div class="container__description align-right">
+        <div class="container container__description align-right">
           <p class="main__title">Search</p>
-          <h2>
-            구매를 원하는<br>
-            상품을 검색하세요
-          </h2>
+          <h2>구매를 원하는 상품을 검색하세요</h2>
           <p class="description--main">
-            구매하고 싶은 물품은 검색해서<br>
+            구매하고 싶은 물품은 검색해서<br />
             쉽게 찾아보세요
           </p>
         </div>
-        <img src="img/Img_home_02.png" alt="돋보기로 여러 가지 상품들 중 원하는 것을 찾고 있는 이미지" class="img--main">
+        <img
+          src="assets/img/Img_home_02.png"
+          alt="돋보기로 여러 가지 상품들 중 원하는 것을 찾고 있는 이미지"
+          loading="lazy"
+          class="img--main"
+        />
+        <!-- srcset="img/Img_home_02.png 588w, img/Img_home_02_large.png 1176w"-->
       </section>
 
       <section class="container container--white">
-        <img src="img/Img_home_03.png" alt="펜 두 개가 들어있는 필통, 파란색 지갑, 하트모양 안경을 판매할 상품으로 등록하는 이미지" class="img--main">
-        <div class="container__description">
+        <img
+          src="assets/img/Img_home_03.png"
+          alt="펜 두 개가 들어있는 필통, 파란색 지갑, 하트모양 안경을 판매할 상품으로 등록하는 이미지"
+          loading="lazy"
+          class="img--main"
+        />
+        <!-- srcset="img/Img_home_03.png 588w, img/Img_home_03_large.png 1176w" -->
+        <div class="container container__description">
           <p class="main__title">Register</p>
-          <h2>
-            판매를 원하는<br>
-            상품을 등록하세요
-          </h2>
+          <h2>판매를 원하는 상품을 등록하세요</h2>
           <p class="description--main">
-            어떤 물건이든 판매하고 싶은 상품을<br>
+            어떤 물건이든 판매하고 싶은 상품을<br />
             쉽게 등록하세요
           </p>
         </div>
       </section>
-    
+
       <section class="closing">
-        <div class="container--closing">
+        <div class="container container--closing">
           <h2 class="closing__description">
-            믿을 수 있는<br>
+            믿을 수 있는<br />
             판다마켓 중고 거래
           </h2>
-          <img src="img/Img_home_bottom.png" alt="장바구니를 메고있는 판다 두 마리가 거래를 마치고 헤어지며 별점과 후기를 남기는 이미지" class="img--closing">
+          <img
+            src="assets/img/Img_home_bottom.png"
+            alt="장바구니를 메고있는 판다 두 마리가 거래를 마치고 헤어지며 별점과 후기를 남기는 이미지"
+            loading="lazy"
+            class="img--closing"
+          />
+          <!-- srcset="
+          img/Img_home_bottom.png       746w,
+          img/Img_home_bottom_small.png 560w" -->
         </div>
       </section>
     </main>
 
     <footer>
-      <p class="copyright">&copy;codeit - 2024</p>
-      <div class="footer__urls">
-        <a href="privacy.html" class="btn url--privacy" role="button" aria-label="정책설명 페이지로 이동합니다.">
-          Privacy Policy
-        </a>
-        <a href="faq.html" class="btn url--faq" role="button" aria-label="고객센터 페이지로 이동합니다.">
-          FAQ
-        </a>
-      </div>
-      <div class="footer--icons">
-        <a href="https://www.facebook.com/?locale=ko_KR" target="_blank" rel="noopener noreferrer" >
-          <img src="img/ic_facebook.svg" alt="페이스북의 아이콘" class="btn icon--footer" role="button">
-        </a>
-        <a href="https://twitter.com/login?lang=ko" target="_blank" rel="noopener noreferrer">
-          <img src="img/ic_twitter.svg" alt="트위터의 아이콘" class="btn icon--footer" role="button">
-        </a>  
-        <a href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop" target="_blank" rel="noopener noreferrer"> 
-          <img src="img/ic_youtube.svg" alt="유튜브의 아이콘" class="btn icon--footer" role="button">
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-          <img src="img/ic_instagram.svg" alt="인스타그램의 아이콘" class="btn icon--footer" role="button">
-        </a>
+      <div class="container container--footer">
+        <p class="copyright">&copy;codeit - 2024</p>
+        <div class="footer__urls">
+          <a
+            href="privacy.html"
+            class="btn url--privacy"
+            role="button"
+            aria-label="정책설명 페이지로 이동합니다."
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="faq.html"
+            class="btn url--faq"
+            role="button"
+            aria-label="고객센터 페이지로 이동합니다."
+          >
+            FAQ
+          </a>
+        </div>
+        <div class="footer--icons">
+          <a
+            href="https://www.facebook.com/?locale=ko_KR"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="assets/icons/ic_facebook.svg"
+              alt="페이스북의 아이콘"
+              class="btn icon--footer"
+              role="button"
+            />
+          </a>
+          <a
+            href="https://twitter.com/login?lang=ko"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="assets/icons/ic_twitter.svg"
+              alt="트위터의 아이콘"
+              class="btn icon--footer"
+              role="button"
+            />
+          </a>
+          <a
+            href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="assets/icons/ic_youtube.svg"
+              alt="유튜브의 아이콘"
+              class="btn icon--footer"
+              role="button"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="assets/icons/ic_instagram.svg"
+              alt="인스타그램의 아이콘"
+              class="btn icon--footer"
+              role="button"
+            />
+          </a>
+        </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>
