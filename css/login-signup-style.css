@@ -46,17 +46,31 @@ main {
   font-size: 16px;
 }
 
+.form__input.invalid {
+  border: 1px solid var(--color-error-red);
+}
+
+.form__error-msg {
+  position: relative;
+  top: -12px;
+  padding-left: 16px;
+  color: var(--color-error-red);
+  font-weight: 500;
+  font-size: 14px;
+}
+
 .input--password {
   position: relative;
 }
 
-.btn--visibility-off {
+.btn--visibility {
   border: none;
   background-color: var(--color-input);
   position: absolute;
   top: 16px;
   right: 24px;
   bottom: 16px;
+  padding: 0;
 }
 
 .btn--interactions {

@@ -24,6 +24,7 @@
   --color-input: #f3f4f6;
   --color-white: #ffffff;
   --color-text-login: #1f2937;
+  --color-error-red: #f74747;
 
   /* Typography */
   --font-primary: "Pretendard-Regular", sans-serif;
@@ -58,3 +59,7 @@ body {
   background-color: var(--color-disabled);
 }
 /* 비활성화시에 속성이랑 클래스 둘다 넣어야 함 */
+
+.display-none {
+  display: none;
+}

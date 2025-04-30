@@ -16,7 +16,12 @@
         />
         <a href="/" class="btn btn--home">판다마켓</a>
       </div>
-      <form action="/" method="post" class="container container--form">
+      <form
+        action="/"
+        method="post"
+        novalidate
+        class="container container--form"
+      >
         <label for="email" class="form__label">이메일</label>
         <input
           id="email"
@@ -27,6 +32,7 @@
           placeholder="이메일을 입력해주세요"
           class="form__input"
         />
+        <div class="form__error-msg error-msg--email"></div>
 
         <label for="nickname" class="form__label">닉네임</label>
         <input
@@ -37,6 +43,7 @@
           placeholder="닉네임을 입력해주세요"
           class="form__input"
         />
+        <div class="form__error-msg error-msg--nickname"></div>
 
         <label for="password" class="form__label">비밀번호</label>
         <div class="input--password">
@@ -45,50 +52,69 @@
             name="password"
             type="password"
             required
-            autocomplete="password"
+            autocomplete="off"
             placeholder="비밀번호를 입력해주세요"
             class="form__input"
           />
           <button
             type="button"
-            class="btn btn--visibility-off"
+            class="btn btn--visibility"
             aria-label="비밀번호 표시"
             aria-pressed="false"
           >
             <img
               src="assets/icons/btn_visibility_off.svg"
               alt="비밀번호를 보이지 않게끔 설정하는 눈에 빗금이 쳐진 아이콘입니다."
-              class="form__img"
+              class="form__icon"
+            />
+            <img
+              src="assets/icons/btn_visibility_on.svg"
+              alt="비밀번호를 보이게끔 설정하는 눈 모양의 아이콘입니다."
+              class="form__icon display-none"
             />
           </button>
         </div>
+        <div class="form__error-msg error-msg--password"></div>
 
-        <label for="password" class="form__label">비밀번호 확인</label>
+        <label for="password-confirm" class="form__label">비밀번호 확인</label>
         <div class="input--password">
           <input
-            id="password"
-            name="password"
+            id="password-confirm"
+            name="password-confirm"
             type="password"
             required
-            autocomplete="password"
+            autocomplete="off"
             placeholder="비밀번호를 재입력해주세요"
             class="form__input"
           />
           <button
             type="button"
-            class="btn btn--visibility-off"
+            class="btn btn--visibility"
             aria-label="비밀번호 표시"
             aria-pressed="false"
           >
             <img
               src="assets/icons/btn_visibility_off.svg"
               alt="비밀번호를 보이지 않게끔 설정하는 눈에 빗금이 쳐진 아이콘입니다."
-              class="form__img"
+              class="form__icon"
+            />
+            <img
+              src="assets/icons/btn_visibility_on.svg"
+              alt="비밀번호를 보이게끔 설정하는 눈 모양의 아이콘입니다."
+              class="form__icon display-none"
             />
           </button>
         </div>
+        <div class="form__error-msg error-msg--password-confirm"></div>
 
-        <button type="submit" class="btn btn--interactions">회원가입</button>
+        <button
+          type="submit"
+          onclick="location.href='login.html'"
+          disabled
+          class="btn btn--interactions btn--disabled"
+        >
+          회원가입
+        </button>
       </form>
       <div class="container container--easy-login">
         간편 로그인하기
@@ -116,5 +142,6 @@
         이미 회원이신가요? <a class="text--url" href="login.html">로그인</a>
       </div>
     </main>
+    <script type="module" defer src="js/login-signup.js"></script>
   </body>
 </html>
