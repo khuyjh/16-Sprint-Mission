@@ -21,11 +21,11 @@ main {
 }
 
 .btn--home {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 66px;
-    font-family: var(--font-secondary);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 66px;
+  font-family: var(--font-secondary);
 }
 
 .form__label {
@@ -61,7 +61,6 @@ main {
 
 .btn--interactions {
   display: inline-block;
-  background-color: var(--color-primary);
   color: var(--color-input);
   text-align: center;
   font-weight: 500;
@@ -94,19 +93,19 @@ main {
   gap: 16px;
 }
 
-.signup-link, .login-link {
+.signup-link,
+.login-link {
   text-align: center;
   font-weight: 500;
   font-size: 14px;
 }
 
 .text--url {
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 
 /* 모바일 사이즈 */
 @media screen and (max-width: 768px) {
-
   main {
     min-width: 375px;
     width: 100%;
