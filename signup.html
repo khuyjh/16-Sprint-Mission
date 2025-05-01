@@ -107,9 +107,10 @@
         </div>
         <div class="form__error-msg error-msg--password-confirm"></div>
 
+        <!-- onclick 부분은 form제출 기능이 있다면 추후 변경 -->
         <button
           type="submit"
-          onclick="location.href='login.html'"
+          onclick="location.href='login.html'; return false;"
           disabled
           class="btn btn--interactions btn--disabled"
         >

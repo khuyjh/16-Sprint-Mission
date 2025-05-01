@@ -1,26 +1,46 @@
 import {
+  isEmpty,
   validateEmail,
   validatePassword,
   validatePasswordConfirm,
+  validatePasswordConfirmReverse,
   validateNickname,
 } from "./validate.js";
 import { switchBtnStatus, switchVisibility } from "./btn-functions.js";
 
-//테스트용 전역 등록 함수
-// window.switchBtnStatus = switchBtnStatus;
+function isSignupPage() {
+  if (window.location.pathname.search("signup") === -1) {
+    return false;
+  }
+  return true;
+}
 
-// const emailInput = document.getElementById("email");
-// const passwordInput = document.getElementById("password");
-// const passwordConfirmInput = document.getElementById("password-confirm");
-// const nicknameInput = document.getElementById("nickname");
 const form = document.querySelector(".container--form");
+const validateMap = {
+  email: validateEmail,
+  password: validatePassword,
+  "password-confirm": validatePasswordConfirm,
+  nickname: validateNickname,
+};
 
-// emailInput.addEventListener("focusout", validateEmail);
-// passwordInput.addEventListener("focusout", validatePassword);
-// passwordConfirmInput.addEventListener("focusout", validatePasswordConfirm);
-// nicknameInput.addEventListener("focusout", validateNickname);
+form.addEventListener("focusout", (event) => {
+  const { id } = event.target;
 
-form.addEventListener("focusout", (event) => {});
-
-document.addEventListener("focusout", switchBtnStatus);
-document.addEventListener("click", switchVisibility);
+  if (validateMap[id]) {
+    validateMap[id](event);
+    //비밀번호확인란부터 입력후 비밀번호를 변경할 시 비밀번호 확인 유효성 검사
+    if (id === "password" && isSignupPage()) {
+      const passwordConfirmInput = document.getElementById("password-confirm");
+      const passwordConfirm = passwordConfirmInput.value;
+      if (!isEmpty(passwordConfirm)) {
+        validatePasswordConfirmReverse();
+      }
+    }
+    switchBtnStatus();
+  }
+});
+form.addEventListener("click", (event) => {
+  if (event.target.classList.contains("form__icon")) {
+    switchVisibility(event);
+  }
+});
