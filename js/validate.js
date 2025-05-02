@@ -55,8 +55,6 @@ function checkPassword(password, passwordConfirm) {
 export function validatePassword(event) {
   const passwordInput = event.target;
   const password = passwordInput.value;
-  // const passwordConfirmInput = document.getElementById("password-confirm");
-  // const passwordConfirm = passwordConfirmInput.value;
   let divErrorMessage = document.querySelector(".error-msg--password");
 
   if (isEmpty(password)) {
@@ -69,16 +67,6 @@ export function validatePassword(event) {
     divErrorMessage.textContent = "";
     removeInvalid(passwordInput);
   }
-  //비밀번호 확인란을 작성 후에 비밀번호를 변경할 경우 일치검사
-  // if (!isEmpty(passwordConfirm) && !checkPassword(password, passwordConfirm)) {
-  //   divErrorMessage = document.querySelector(".error-msg--password-confirm");
-  //   divErrorMessage.textContent = "비밀번호가 일치하지 않습니다";
-  //   addInvalid(passwordConfirmInput);
-  // } else {
-  //   divErrorMessage = document.querySelector(".error-msg--password-confirm");
-  //   divErrorMessage.textContent = "";
-  //   removeInvalid(passwordConfirmInput);
-  // }
 }
 
 export function validatePasswordConfirm(event) {
@@ -97,6 +85,7 @@ export function validatePasswordConfirm(event) {
   }
 }
 
+//password유효성 검사를 하면서 password-confirm검사를 하기 위해 event가 아닌 고정으로 값을 가져오도록 함
 export function validatePasswordConfirmReverse() {
   const passwordInput = document.getElementById("password");
   const password = passwordInput.value;
