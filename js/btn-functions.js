@@ -1,5 +1,5 @@
 //모든 input의 유효성 검사를 통과했을 때에만 누를 수 있어야하므로 validate와 작동방식이 달라야함
-export function switchBtnStatus() {
+export function toggleBtnStatus() {
   const btn = document.querySelector(".btn--interactions");
   const errorMessages = document.querySelectorAll(".form__error-msg");
   const inputs = document.querySelectorAll(".form__input");
@@ -21,21 +21,4 @@ export function switchBtnStatus() {
 
   btn.removeAttribute("disabled");
   btn.classList.remove("btn--disabled");
-}
-
-export function switchVisibility(event) {
-  const btn = event.target.parentElement;
-  const passwordInput = btn.previousElementSibling;
-  const iconOff = btn.children[0];
-  const iconOn = btn.children[1];
-
-  if (passwordInput.getAttribute("type") === "password") {
-    passwordInput.setAttribute("type", "text");
-    btn.setAttribute("aria-pressed", "true");
-  } else {
-    passwordInput.setAttribute("type", "password");
-    btn.setAttribute("aria-pressed", "false");
-  }
-  iconOff.classList.toggle("display-none");
-  iconOn.classList.toggle("display-none");
 }

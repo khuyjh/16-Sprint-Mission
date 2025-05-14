@@ -6,13 +6,27 @@ import {
   validatePasswordConfirmReverse,
   validateNickname,
 } from "./validate.js";
-import { switchBtnStatus, switchVisibility } from "./btn-functions.js";
+import { toggleBtnStatus } from "./btn-functions.js";
+
+function toggleVisibility(event) {
+  const btn = event.target.parentElement;
+  const passwordInput = btn.previousElementSibling;
+  const iconOff = btn.children[0];
+  const iconOn = btn.children[1];
+
+  if (passwordInput.getAttribute("type") === "password") {
+    passwordInput.setAttribute("type", "text");
+    btn.setAttribute("aria-pressed", "true");
+  } else {
+    passwordInput.setAttribute("type", "password");
+    btn.setAttribute("aria-pressed", "false");
+  }
+  iconOff.classList.toggle("display-none");
+  iconOn.classList.toggle("display-none");
+}
 
 function isSignupPage() {
-  if (window.location.pathname.search("signup") === -1) {
-    return false;
-  }
-  return true;
+  return window.location.pathname.search("signup") === -1 ? false : true;
 }
 
 const form = document.querySelector(".container--form");
@@ -36,11 +50,11 @@ form.addEventListener("focusout", (event) => {
         validatePasswordConfirmReverse();
       }
     }
-    switchBtnStatus();
+    toggleBtnStatus();
   }
 });
 form.addEventListener("click", (event) => {
   if (event.target.classList.contains("form__icon")) {
-    switchVisibility(event);
+    toggleVisibility(event);
   }
 });
