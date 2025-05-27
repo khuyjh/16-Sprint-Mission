@@ -1,0 +1,23 @@
+.card-container--all {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  row-gap: 32px;
+  column-gap: 8px;
+}
+
+/* tablet size */
+@media screen and (min-width: 768px) {
+  .card-container--all {
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+  }
+}
+
+/* desktop size */
+@media screen and (min-width: 1200px) {
+  .card-container--all {
+    grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+    column-gap: 24px;
+  }
+}
