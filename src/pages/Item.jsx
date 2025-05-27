@@ -3,7 +3,7 @@ import BestProductList from "../components/BestProductList";
 import AllProductList from "../components/AllProductList";
 import useBreakpoint from "../components/hooks/useBreakpoint";
 import { getProducts } from "../api";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import "./Item.css";
 
 function Item() {
@@ -12,7 +12,13 @@ function Item() {
   const [totalCount, setTotalCount] = useState(0);
   const [orderBy, setOrderBy] = useState("recent");
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputValue, setInputValue] = useState("");
   const { breakpoint, pageSize, bestProductsPageSize } = useBreakpoint();
+  const keyword = useRef("");
+
+  const onSearch = () => {
+    handleLoad({ orderBy, pageSize, keyword: keyword.current });
+  };
 
   const handleLoad = useCallback(async (...args) => {
     const result = await getProducts(...args);
@@ -38,7 +44,7 @@ function Item() {
   }, [bestProductsPageSize, handleLoad]);
 
   useEffect(() => {
-    handleLoad({ orderBy, currentPage, pageSize });
+    handleLoad({ orderBy, currentPage, pageSize, keyword: keyword.current });
   }, [orderBy, currentPage, pageSize, handleLoad]);
 
   return (
@@ -51,8 +57,12 @@ function Item() {
         pageSize={pageSize}
         currentPage={currentPage}
         breakpoint={breakpoint}
+        inputValue={inputValue}
+        keyword={keyword}
         onClickPage={setCurrentPage}
         onSort={setOrderBy}
+        onChangeInputValue={setInputValue}
+        onSearch={onSearch}
       />
     </div>
   );

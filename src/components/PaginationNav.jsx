@@ -2,7 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import ArrowButton from "./ArrowButton";
 import PageButton from "./PageButton";
 
-const PaginationNav = ({ onClickPage, totalPage, currentPage, breakpoint }) => {
+const PaginationNav = ({
+  signalSearch,
+  onClickPage,
+  totalPage,
+  currentPage,
+  breakpoint,
+}) => {
   const [pageList, setPageList] = useState([[1]]);
   const [pageListIndex, setPageListIndex] = useState(0);
   const PrevArrowButton = {
@@ -28,6 +34,7 @@ const PaginationNav = ({ onClickPage, totalPage, currentPage, breakpoint }) => {
 
   const calcPageList = (totalPage) => {
     if (!totalPage) {
+      setPageList((prev) => [[1]]);
       return;
     }
     const WholePageList = [];
@@ -50,16 +57,12 @@ const PaginationNav = ({ onClickPage, totalPage, currentPage, breakpoint }) => {
   };
 
   useEffect(() => {
-    if (!totalPage) {
-      console.log("데이터 받아오는 중");
-      return;
-    }
     calcPageList(totalPage);
   }, [totalPage]);
 
   useEffect(() => {
     resetPagination();
-  }, [breakpoint, resetPagination]);
+  }, [signalSearch, breakpoint, resetPagination]);
 
   return (
     <div>
