@@ -1,4 +1,5 @@
-.Item {
+.container {
+  min-width: 375px;
 }
 
 /* tablet size */

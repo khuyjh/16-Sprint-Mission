@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
 import PaginationNav from "./PaginationNav";
-import "./AllProductList.css";
+import styles from "./AllProductList.module.css";
 import { useState } from "react";
 
 const calcTotalPage = (totalCount, pageSize) =>
@@ -15,6 +15,7 @@ const AllProductList = ({
   breakpoint,
   inputValue,
   keyword,
+  orderBy,
   onClickPage,
   onSort,
   onChangeInputValue,
@@ -23,21 +24,24 @@ const AllProductList = ({
   const [signalSearch, setSignalSearch] = useState(0);
 
   return (
-    <section>
+    <section className={styles.container}>
       <SearchBar
         inputValue={inputValue}
         keyword={keyword}
+        orderBy={orderBy}
         onSort={onSort}
         onChangeInputValue={onChangeInputValue}
         onSearch={onSearch}
         setSignalSearch={setSignalSearch}
       />
-      <div className="card-container--all">
+      <div className={styles["card-container"]}>
         {products.map((product) => {
           return <ProductCard key={product.id} {...product} />;
         })}
-        {!products.length && <div>일치하는 상품이 없습니다</div>}
       </div>
+      {!products.length && (
+        <div className={styles.alert}>관련 상품이 없어요😥</div>
+      )}
       <PaginationNav
         signalSearch={signalSearch}
         onClickPage={onClickPage}

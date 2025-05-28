@@ -10,7 +10,11 @@ const ArrowButton = ({
   };
 
   return (
-    <button disabled={endIndex === pageListIndex} onClick={handleMovePageList}>
+    <button
+      className="btn pagination-btn"
+      disabled={endIndex === pageListIndex}
+      onClick={handleMovePageList}
+    >
       {shape}
     </button>
   );

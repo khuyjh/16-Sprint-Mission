@@ -6,9 +6,9 @@ export const getProducts = async ({
   pageSize = 4,
   keyword = "",
 }) => {
-  const query = keyword
-    ? `orderBy=${orderBy}&page=${currentPage}&pageSize=${pageSize}&keyword=${keyword}`
-    : `orderBy=${orderBy}&page=${currentPage}&pageSize=${pageSize}`;
+  const query = `orderBy=${orderBy}&page=${currentPage}&pageSize=${pageSize}${
+    keyword ? `&keyword=${keyword}` : ""
+  }`;
   const response = await fetch(`${BASE_URL}products?${query}`);
   if (!response.ok) {
     throw new Error("항목을 불러오는데 실패했습니다.");

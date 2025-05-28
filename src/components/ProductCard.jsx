@@ -1,12 +1,12 @@
-import "./ProductCard.css";
+import styles from "./ProductCard.module.css";
 
 const ProductCard = ({ images, name, price, favoriteCount }) => {
   return (
-    <div className="card">
-      <img className="img" src={images[0]} />
-      <p>{name}</p>
-      <p>{price.toLocaleString()}</p>
-      <p>♡{favoriteCount}</p>
+    <div className={styles.card}>
+      <img className={styles.img} src={images[0]} />
+      <p className={styles["product-name"]}>{name}</p>
+      <p className={styles.price}>{price.toLocaleString()}원</p>
+      <p className={styles["favorite-count"]}>♡ {favoriteCount}</p>
     </div>
   );
 };

@@ -1,0 +1,4 @@
+.selected {
+  color: var(--color-text-grey100);
+  background-color: var(--color-selected);
+}

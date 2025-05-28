@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import ArrowButton from "./ArrowButton";
 import PageButton from "./PageButton";
+import styles from "./PaginationNav.module.css";
 
 const PaginationNav = ({
   signalSearch,
@@ -65,7 +66,7 @@ const PaginationNav = ({
   }, [signalSearch, breakpoint, resetPagination]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <ArrowButton
         onMovePageList={onMovePageList}
         pageListIndex={pageListIndex}

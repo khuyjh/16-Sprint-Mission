@@ -4,7 +4,7 @@ import AllProductList from "../components/AllProductList";
 import useBreakpoint from "../components/hooks/useBreakpoint";
 import { getProducts } from "../api";
 import { useState, useEffect, useCallback, useRef } from "react";
-import "./Item.css";
+import styles from "./Item.module.css";
 
 function Item() {
   const [products, setProducts] = useState([]);
@@ -48,7 +48,7 @@ function Item() {
   }, [orderBy, currentPage, pageSize, handleLoad]);
 
   return (
-    <div className="Item">
+    <div className={styles.container}>
       <Nav />
       <BestProductList bestProducts={bestProducts} />
       <AllProductList
@@ -59,6 +59,7 @@ function Item() {
         breakpoint={breakpoint}
         inputValue={inputValue}
         keyword={keyword}
+        orderBy={orderBy}
         onClickPage={setCurrentPage}
         onSort={setOrderBy}
         onChangeInputValue={setInputValue}
