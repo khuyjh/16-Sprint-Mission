@@ -4,9 +4,9 @@ import AllProductList from "../components/AllProductList";
 import useBreakpoint from "../components/hooks/useBreakpoint";
 import { getProducts } from "../api";
 import { useState, useEffect, useCallback, useRef } from "react";
-import styles from "./Item.module.css";
+import styles from "./Items.module.css";
 
-function Item() {
+function Items() {
   const [products, setProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -49,7 +49,6 @@ function Item() {
 
   return (
     <div className={styles.container}>
-      <Nav />
       <BestProductList bestProducts={bestProducts} />
       <AllProductList
         products={products}
@@ -69,4 +68,4 @@ function Item() {
   );
 }
 
-export default Item;
+export default Items;

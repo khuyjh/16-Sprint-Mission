@@ -1,7 +1,10 @@
 import logoImg from "../assets/logo/panda-face_small.svg";
 import styles from "./Nav.module.css";
+import { useLocation } from "react-router-dom";
 
 const Nav = () => {
+  const location = useLocation();
+
   return (
     <nav className={styles.container}>
       <div className={styles["link-container"]}>
@@ -18,7 +21,12 @@ const Nav = () => {
         <button className={`${styles.link}`} type="button">
           자유게시판
         </button>
-        <button className={`${styles.link} ${styles.selected}`} type="button">
+        <button
+          className={`${styles.link} ${
+            styles[`${location.pathname === "/items" ? "selected" : "none"}`]
+          }`}
+          type="button"
+        >
           중고마켓
         </button>
       </div>
