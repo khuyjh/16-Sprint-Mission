@@ -38,23 +38,23 @@ const PaginationNav = ({
       setPageList((prev) => [[1]]);
       return;
     }
-    const WholePageList = [];
+    const wholePageList = [];
     const dividedPageList = [];
     let count = 0;
 
     for (let i = 1; i <= totalPage; i++) {
       if (count === 5) {
-        WholePageList.push([...dividedPageList]);
+        wholePageList.push([...dividedPageList]);
         dividedPageList.splice(0);
         count = 0;
       }
       dividedPageList.push(i);
       count++;
       if (totalPage === i) {
-        WholePageList.push([...dividedPageList]);
+        wholePageList.push([...dividedPageList]);
       }
     }
-    setPageList((prev) => [...WholePageList]);
+    setPageList((prev) => [...wholePageList]);
   };
 
   useEffect(() => {
