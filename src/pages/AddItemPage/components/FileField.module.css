@@ -1,0 +1,73 @@
+.label-replacer {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+}
+
+.img-container {
+  display: flex;
+  gap: 10px;
+  margin: var(--space-md) 0;
+}
+
+.upload-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 50%;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  padding: 32px 32px;
+  background-color: var(--color-input);
+  color: var(--color-text-grey400);
+  gap: 10px;
+}
+
+.plus-icon {
+  line-height: 1;
+  font-size: 60px;
+}
+
+.upload-text {
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+}
+
+.img-container input {
+  display: none;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 1/1;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.img-space {
+  position: relative;
+  flex: 1 1 50%;
+  aspect-ratio: 1/1;
+}
+
+.error-message {
+  color: var(--color-error-red);
+}
+
+/* tablet size */
+@media screen and (min-width: 768px) {
+  .upload-btn {
+    flex: 0 0 25%;
+  }
+
+  .img-space {
+    flex: 0 0 25%;
+  }
+}

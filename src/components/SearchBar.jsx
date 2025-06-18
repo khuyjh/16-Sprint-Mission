@@ -30,7 +30,7 @@ const SearchBar = ({
     <div className={styles.container}>
       <h3>전체 상품</h3>
       <Link className={styles["btn-wrapper"]} to="/additem">
-        <button className={`btn ${styles["additem-btn"]}`}>
+        <button className={`btn primary-btn ${styles["additem-btn"]}`}>
           상품 등록하기
         </button>
       </Link>

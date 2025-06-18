@@ -14,23 +14,33 @@ const Nav = () => {
             alt="판다마켓 로고"
             className={styles["logo-img"]}
           />
-          <button className={styles.logo} type="button">
+          <button className={`btn ${styles.logo}`} type="button">
             판다마켓
           </button>
         </div>
-        <button className={`${styles.link}`} type="button">
+        <button className={`btn ${styles.link}`} type="button">
           자유게시판
         </button>
         <button
-          className={`${styles.link} ${
-            styles[`${location.pathname === "/items" ? "selected" : "none"}`]
+          className={`btn ${styles.link} ${
+            styles[
+              `${
+                location.pathname === "/items" ||
+                location.pathname === "/additem"
+                  ? "selected"
+                  : "none"
+              }`
+            ]
           }`}
           type="button"
         >
           중고마켓
         </button>
       </div>
-      <button className={`btn ${styles["login-btn"]}`} type="button">
+      <button
+        className={`btn primary-btn ${styles["login-btn"]}`}
+        type="button"
+      >
         로그인
       </button>
     </nav>
