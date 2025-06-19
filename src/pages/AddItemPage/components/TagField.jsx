@@ -23,7 +23,6 @@ const TagField = ({ label, id, type, placeholder, onSaveData }) => {
       return;
     }
     setTags((prev) => [...prev, `#${value}`]);
-    listKey.current += 1;
     setValue((prev) => "");
   };
 
