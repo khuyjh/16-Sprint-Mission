@@ -33,7 +33,7 @@ const PaginationNav = ({
     onClickPage((prev) => pageList[pageListIndex + direction][0]);
   };
 
-  const calcPageList = (totalPage) => {
+  const calcPageList = useCallback((totalPage) => {
     if (!totalPage) {
       setPageList((prev) => [[1]]);
       return;
@@ -55,11 +55,11 @@ const PaginationNav = ({
       }
     }
     setPageList((prev) => [...wholePageList]);
-  };
+  }, []);
 
   useEffect(() => {
     calcPageList(totalPage);
-  }, [totalPage]);
+  }, [totalPage, calcPageList]);
 
   useEffect(() => {
     resetPagination();

@@ -16,6 +16,9 @@ function Items() {
   const { breakpoint, pageSize, bestProductsPageSize } = useBreakpoint();
   const keyword = useRef("");
 
+  const calcTotalPage = (totalCount, pageSize) =>
+    Math.ceil(totalCount / pageSize);
+
   const onSearch = () => {
     handleLoad({ orderBy, pageSize, keyword: keyword.current });
   };
@@ -52,8 +55,7 @@ function Items() {
       <BestProductList bestProducts={bestProducts} />
       <AllProductList
         products={products}
-        totalCount={totalCount}
-        pageSize={pageSize}
+        totalPage={calcTotalPage(totalCount, pageSize)}
         currentPage={currentPage}
         breakpoint={breakpoint}
         inputValue={inputValue}

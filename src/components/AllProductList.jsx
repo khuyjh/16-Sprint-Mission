@@ -4,13 +4,9 @@ import PaginationNav from "./PaginationNav";
 import styles from "./AllProductList.module.css";
 import { useState } from "react";
 
-const calcTotalPage = (totalCount, pageSize) =>
-  Math.ceil(totalCount / pageSize);
-
 const AllProductList = ({
   products,
-  totalCount,
-  pageSize,
+  totalPage,
   currentPage,
   breakpoint,
   inputValue,
@@ -45,7 +41,7 @@ const AllProductList = ({
       <PaginationNav
         signalSearch={signalSearch}
         onClickPage={onClickPage}
-        totalPage={calcTotalPage(totalCount, pageSize)}
+        totalPage={totalPage}
         currentPage={currentPage}
         breakpoint={breakpoint}
       />

@@ -41,7 +41,7 @@ const SearchBar = ({
           placeholder="검색할 상품을 입력해주세요"
           onChange={handleChangeInputValue}
           onKeyDown={handleSearch}
-        ></input>
+        />
         <img
           className={styles["search-icon"]}
           src={searchIcon}
