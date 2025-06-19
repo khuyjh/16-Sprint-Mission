@@ -6,7 +6,7 @@
   font-style: normal;
 
   font-family: "ROKAF SANS";
-  src: url("assets/fonts/ROKAF\ Sans\ Bold.ttf") format("truetype");
+  src: url("./assets/fonts/ROKAF-Sans-Bold.ttf") format("truetype");
 }
 
 :root {
