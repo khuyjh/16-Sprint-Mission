@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import ArrowButton from "./ArrowButton";
 import PageButton from "./PageButton";
 import styles from "./PaginationNav.module.css";
+import usePagination from "./hooks/UsePagination";
 
 const PaginationNav = ({
   signalSearch,
@@ -10,8 +11,12 @@ const PaginationNav = ({
   currentPage,
   breakpoint,
 }) => {
-  const [pageList, setPageList] = useState([[1]]);
-  const [pageListIndex, setPageListIndex] = useState(0);
+  const { pageList, pageListIndex, onMovePageList } = usePagination(
+    totalPage,
+    breakpoint,
+    signalSearch,
+    onClickPage
+  );
   const PrevArrowButton = {
     shape: "<",
     direction: -1,
@@ -22,48 +27,6 @@ const PaginationNav = ({
     direction: 1,
     endIndex: pageList.length - 1,
   };
-
-  const resetPagination = useCallback(() => {
-    setPageListIndex((prev) => 0);
-    onClickPage((prev) => 1);
-  }, [onClickPage]);
-
-  const onMovePageList = (direction) => {
-    setPageListIndex((prev) => prev + direction);
-    onClickPage((prev) => pageList[pageListIndex + direction][0]);
-  };
-
-  const calcPageList = useCallback((totalPage) => {
-    if (!totalPage) {
-      setPageList((prev) => [[1]]);
-      return;
-    }
-    const wholePageList = [];
-    const dividedPageList = [];
-    let count = 0;
-
-    for (let i = 1; i <= totalPage; i++) {
-      if (count === 5) {
-        wholePageList.push([...dividedPageList]);
-        dividedPageList.splice(0);
-        count = 0;
-      }
-      dividedPageList.push(i);
-      count++;
-      if (totalPage === i) {
-        wholePageList.push([...dividedPageList]);
-      }
-    }
-    setPageList((prev) => [...wholePageList]);
-  }, []);
-
-  useEffect(() => {
-    calcPageList(totalPage);
-  }, [totalPage, calcPageList]);
-
-  useEffect(() => {
-    resetPagination();
-  }, [signalSearch, breakpoint, resetPagination]);
 
   return (
     <div className={styles.container}>
