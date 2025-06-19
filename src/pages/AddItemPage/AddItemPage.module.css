@@ -1,4 +1,4 @@
-.form-container {
+.formContainer {
   min-width: 375px;
   display: flex;
   flex-direction: column;
@@ -6,24 +6,24 @@
   padding: var(--space-lg) var(--space-md) 70px var(--space-md);
 }
 
-.submit-container {
+.submitContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.form-container h2 {
+.formContainer h2 {
   font-size: 20px;
   font-weight: var(--font-weight-bold);
 }
 
-.form-container label {
+.formContainer label {
   font-size: 18px;
   font-weight: var(--font-weight-bold);
 }
 
-.submit-button {
+.submitButton {
   width: 74px;
   height: 42px;
   border-radius: 8px;
@@ -33,7 +33,7 @@
   line-height: 1;
 }
 
-.form-container input {
+.formContainer input {
   width: 100%;
   height: 56px;
   border: none;
@@ -43,12 +43,12 @@
   background-color: var(--color-input);
 }
 
-.form-container input::placeholder {
+.formContainer input::placeholder {
   font-size: 16px;
   color: var(--color-text-grey400);
 }
 
-.form-container textarea {
+.formContainer textarea {
   width: 100%;
   height: 282px;
   border: none;
@@ -60,19 +60,15 @@
   font-family: var(--font-primary);
 }
 
-.form-container textarea::placeholder {
+.formContainer textarea::placeholder {
   font-family: var(--font-primary);
   font-size: 16px;
   color: var(--color-text-grey400);
 }
 
-/* tablet size */
-@media screen and (min-width: 768px) {
-}
-
 /* desktop size */
 @media screen and (min-width: 1200px) {
-  .form-container {
+  .formContainer {
     width: 1200px;
     margin: 0 auto;
   }

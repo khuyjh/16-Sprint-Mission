@@ -4,6 +4,7 @@ import Field from "./components/Field";
 import TagField from "./components/TagField";
 import isEmpty from "../../utils/isEmpty";
 import styles from "./AddItemPage.module.css";
+import clsx from "clsx";
 
 const DATA_FORMAT = {
   images: [],
@@ -60,13 +61,13 @@ const AddItemPage = () => {
   }, [formData]);
 
   return (
-    <form className={styles["form-container"]}>
-      <div className={styles["submit-container"]}>
+    <form className={styles.formContainer}>
+      <div className={styles.submitContainer}>
         <h2>상품 등록하기</h2>
         <button
-          className={`btn primary-btn ${disabled ? "disabled" : ""} ${
-            styles["submit-button"]
-          }`}
+          className={clsx("btn", "primary-btn", styles.submitButton, {
+            ["disabled"]: disabled,
+          })}
           disabled={disabled}
           type="button"
         >

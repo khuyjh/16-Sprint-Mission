@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import XButton from "../../../common/XButton";
 import styles from "./FileField.module.css";
+import clsx from "clsx";
 
 const ERROR_MESSAGE = "*이미지 등록은 최대 1개까지 가능합니다.";
 
@@ -45,35 +46,35 @@ const FileField = ({ label, id, type, onSaveData }) => {
 
   return (
     <div>
-      <div className={styles["label-replacer"]}>{label}</div>
-      <div className={`${styles["img-container"]}`}>
+      <div className={styles.labelReplacer}>{label}</div>
+      <div className={styles.imgContainer}>
         <label
-          className={`btn ${styles["upload-btn"]}`}
+          className={clsx("btn", styles.uploadBtn)}
           htmlFor={id}
           onClick={handleErrorMessage}
         >
-          <div className={styles["plus-icon"]}>+</div>
-          <div className={styles["upload-text"]}>이미지 등록</div>
+          <div className={styles.plusIcon}>+</div>
+          <div className={styles.uploadText}>이미지 등록</div>
         </label>
         <input id={id} type={type} onChange={handleChangeImg} />
         {selectedFiled ? (
-          <div className={`${styles["img-space"]}`}>
+          <div className={styles.imgSpace}>
             <img
               className={styles.img}
               src={preview}
               alt="등록하려는 상품의 이미지"
             />
             <XButton
-              className={`btn ${styles["delete-btn"]}`}
+              className={clsx("btn", styles.deleteBtn)}
               onClick={handleDeleteImg}
             />
           </div>
         ) : (
-          <div className={`${styles["img-space"]}`} />
+          <div className={styles.imgSpace} />
         )}
       </div>
       {hasError ? (
-        <div className={`${styles["error-message"]}`}>{ERROR_MESSAGE}</div>
+        <div className={styles.errorMessage}>{ERROR_MESSAGE}</div>
       ) : undefined}
     </div>
   );

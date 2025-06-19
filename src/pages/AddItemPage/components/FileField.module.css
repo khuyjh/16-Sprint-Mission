@@ -1,15 +1,15 @@
-.label-replacer {
+.labelReplacer {
   font-size: 18px;
   font-weight: var(--font-weight-bold);
 }
 
-.img-container {
+.imgContainer {
   display: flex;
   gap: 10px;
   margin: var(--space-md) 0;
 }
 
-.upload-btn {
+.uploadBtn {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,17 +23,17 @@
   gap: 10px;
 }
 
-.plus-icon {
+.plusIcon {
   line-height: 1;
   font-size: 60px;
 }
 
-.upload-text {
+.uploadText {
   font-size: 16px;
   font-weight: var(--font-weight-regular);
 }
 
-.img-container input {
+.imgContainer input {
   display: none;
 }
 
@@ -45,29 +45,29 @@
   aspect-ratio: 1/1;
 }
 
-.delete-btn {
+.deleteBtn {
   position: absolute;
   top: 12px;
   right: 12px;
 }
 
-.img-space {
+.imgSpace {
   position: relative;
   flex: 1 1 50%;
   aspect-ratio: 1/1;
 }
 
-.error-message {
+.errorMessage {
   color: var(--color-error-red);
 }
 
 /* tablet size */
 @media screen and (min-width: 768px) {
-  .upload-btn {
+  .uploadBtn {
     flex: 0 0 25%;
   }
 
-  .img-space {
+  .imgSpace {
     flex: 0 0 25%;
   }
 }
