@@ -62,7 +62,7 @@
   font-size: 16px;
   appearance: none;
   -webkit-appearance: none;
-  background: url("../assets/icons/ic_sort.svg");
+  background: url("../../../assets/icons/ic_sort.svg");
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -9999px;
@@ -90,7 +90,7 @@
     height: 42px;
     appearance: none;
     -webkit-appearance: none;
-    background: url("../assets/icons/ic_arrow_down.svg");
+    background: url("../../../assets/icons/ic_arrow_down.svg");
     background-repeat: no-repeat;
     background-position: 75% 50%;
     text-indent: 0;

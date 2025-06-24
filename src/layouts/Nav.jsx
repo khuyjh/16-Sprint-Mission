@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 
 const Nav = () => {
   const location = useLocation();
+  const isMarketPage =
+    location.pathname === "/items" || location.pathname === "/additem";
 
   return (
     <nav className={styles.container}>
@@ -23,14 +25,7 @@ const Nav = () => {
         </button>
         <button
           className={`btn ${styles.link} ${
-            styles[
-              `${
-                location.pathname === "/items" ||
-                location.pathname === "/additem"
-                  ? "selected"
-                  : "none"
-              }`
-            ]
+            isMarketPage ? styles.selected : ""
           }`}
           type="button"
         >

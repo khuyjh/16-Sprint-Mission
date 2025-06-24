@@ -1,8 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 
-const BUTTONS_PER_PAGE = 5;
-
-const usePagination = (totalPage, breakpoint, signalSearch, onClickPage) => {
+const usePagination = (
+  BUTTONS_PER_PAGE,
+  totalPage,
+  breakpoint,
+  signalSearch,
+  onClickPage
+) => {
   const [pageList, setPageList] = useState([[1]]);
   const [pageListIndex, setPageListIndex] = useState(0);
 

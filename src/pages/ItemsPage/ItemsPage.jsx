@@ -1,12 +1,11 @@
-import Nav from "../components/Nav";
-import BestProductList from "../components/BestProductList";
-import AllProductList from "../components/AllProductList";
-import useBreakpoint from "../components/hooks/useBreakpoint";
-import { getProducts } from "../api";
+import BestProductList from "./components/BestProductList";
+import AllProductList from "./components/AllProductList";
+import useBreakpoint from "../../hooks/useBreakpoint";
+import { getProducts } from "../../api";
 import { useState, useEffect, useCallback, useRef } from "react";
-import styles from "./Items.module.css";
+import styles from "./ItemsPage.module.css";
 
-function Items() {
+const ItemsPage = () => {
   const [products, setProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -68,6 +67,6 @@ function Items() {
       />
     </div>
   );
-}
+};
 
-export default Items;
+export default ItemsPage;

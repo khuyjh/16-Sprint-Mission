@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import ArrowButton from "./ArrowButton";
-import PageButton from "./PageButton";
+import ArrowButton from "../../../common/ArrowButton";
+import PageButton from "../../../common/PageButton";
 import styles from "./PaginationNav.module.css";
-import usePagination from "./hooks/UsePagination";
+import usePagination from "../../../hooks/usePagination";
+
+const BUTTONS_PER_PAGE = 5;
 
 const PaginationNav = ({
   signalSearch,
@@ -12,6 +13,7 @@ const PaginationNav = ({
   breakpoint,
 }) => {
   const { pageList, pageListIndex, onMovePageList } = usePagination(
+    BUTTONS_PER_PAGE,
     totalPage,
     breakpoint,
     signalSearch,

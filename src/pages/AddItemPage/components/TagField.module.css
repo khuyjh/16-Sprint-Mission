@@ -2,11 +2,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 36px;
+  height: auto;
   border: none;
   border-radius: 26px;
   padding: 6px 12px;
   margin: 14px 12px 0 0;
   background-color: var(--color-input);
   gap: var(--space-sm);
+  word-break: break-all;
 }

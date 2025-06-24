@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
-import searchIcon from "../assets/icons/ic_search.svg";
+import searchIcon from "../../../assets/icons/ic_search.svg";
 
 const SearchBar = ({
   inputValue,

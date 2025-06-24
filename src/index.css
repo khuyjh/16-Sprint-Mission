@@ -45,6 +45,10 @@
   /* Fonts */
   --font-weight-bold: 700;
   --font-weight-regular: 400;
+
+  /* Z-index */
+  --z-index-base: 0;
+  --z-index-navigation: 500;
 }
 
 * {

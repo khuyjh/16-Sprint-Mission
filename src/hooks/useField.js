@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import formatNumber from "../../utils/formatNumber";
+import formatNumber from "../utils/formatNumber";
 
 const KEY_MAP = {
   productName: "name",
