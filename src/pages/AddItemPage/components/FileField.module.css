@@ -1,0 +1,73 @@
+.labelReplacer {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: var(--space-md) 0;
+}
+
+.uploadBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 50%;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  padding: 32px 32px;
+  background-color: var(--color-input);
+  color: var(--color-text-grey400);
+  gap: 10px;
+}
+
+.plusIcon {
+  line-height: 1;
+  font-size: 60px;
+}
+
+.uploadText {
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+}
+
+.imgContainer input {
+  display: none;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 1/1;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.imgSpace {
+  position: relative;
+  flex: 1 1 50%;
+  aspect-ratio: 1/1;
+}
+
+.errorMessage {
+  color: var(--color-error-red);
+}
+
+/* tablet size */
+@media screen and (min-width: 768px) {
+  .uploadBtn {
+    flex: 0 0 25%;
+  }
+
+  .imgSpace {
+    flex: 0 0 25%;
+  }
+}

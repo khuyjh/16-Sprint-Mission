@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Nav from "./components/Nav";
-import Items from "./pages/Items";
-import AddItem from "./pages/AddItem";
+import Nav from "./layouts/Nav";
+import ItemsPage from "./pages/ItemsPage/ItemsPage";
+import AddItemPage from "./pages/AddItemPage/AddItemPage";
 
 const App = () => {
   return (
@@ -9,8 +9,8 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Navigate to="/items" replace />} />
-        <Route path="/items" element={<Items />} />
-        <Route path="/additem" element={<AddItem />} />
+        <Route path="/items" element={<ItemsPage />} />
+        <Route path="/additem" element={<AddItemPage />} />
       </Routes>
     </BrowserRouter>
   );

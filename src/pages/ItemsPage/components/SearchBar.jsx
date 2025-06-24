@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
-import searchIcon from "../assets/icons/ic_search.svg";
+import searchIcon from "../../../assets/icons/ic_search.svg";
 
 const SearchBar = ({
   inputValue,
@@ -30,7 +30,7 @@ const SearchBar = ({
     <div className={styles.container}>
       <h3>전체 상품</h3>
       <Link className={styles["btn-wrapper"]} to="/additem">
-        <button className={`btn ${styles["additem-btn"]}`}>
+        <button className={`btn primary-btn ${styles["additem-btn"]}`}>
           상품 등록하기
         </button>
       </Link>
@@ -41,7 +41,7 @@ const SearchBar = ({
           placeholder="검색할 상품을 입력해주세요"
           onChange={handleChangeInputValue}
           onKeyDown={handleSearch}
-        ></input>
+        />
         <img
           className={styles["search-icon"]}
           src={searchIcon}

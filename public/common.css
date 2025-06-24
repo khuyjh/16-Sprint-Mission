@@ -2,18 +2,26 @@
   cursor: pointer;
   border: none;
   white-space: nowrap;
-  background-color: var(--color-primary);
+  text-decoration: none;
+  background: none;
+  text-align: center;
 }
 
-.btn:hover {
+.primary-btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.primary-btn:not(:disabled):hover {
   background-color: var(--color-primary-dark);
 }
 
-.btn:active {
+.primary-btn:active {
   background-color: var(--color-primary-darker);
 }
 
-.btn .disabled {
+.disabled {
+  cursor: default;
   background-color: var(--color-disabled);
 }
 
