@@ -65,3 +65,8 @@ button {
   padding-inline: 0;
   padding-block: 0;
 }
+
+a {
+  color: unset;
+  text-decoration: none;
+}

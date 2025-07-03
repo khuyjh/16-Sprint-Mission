@@ -1,6 +1,6 @@
 import logoImg from "../assets/logo/panda-face_small.svg";
 import styles from "./Nav.module.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = () => {
   const location = useLocation();
@@ -29,7 +29,9 @@ const Nav = () => {
           }`}
           type="button"
         >
+          <Link to={"/items"}>
           중고마켓
+          </Link>
         </button>
       </div>
       <button
