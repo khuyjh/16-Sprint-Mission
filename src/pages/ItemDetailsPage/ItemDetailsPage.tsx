@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
-import { getProductById, getComments } from "../../api";
+import { getProductById, getComments } from "@/api";
 import ProductInfo from "./components/ProductInfo";
 
 const COMMENTS_LIMIT = 5;
@@ -95,7 +95,7 @@ const ItemDetialsPage = () => {
     <>
       <ProductInfo {...product} />
       {comments?.list.map((comment: Comment): ReactNode => {
-        return <div>{comment.content}</div>;
+        return <div key={comment.id}>{comment.content}</div>;
       })}
       <button
         onClick={() => {
