@@ -1,7 +1,15 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type ReactNode,
+} from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getProductById, getComments } from "@/api";
 import ProductInfo from "./components/ProductInfo";
+import clsx from "clsx";
 
 const COMMENTS_LIMIT = 5;
 
@@ -40,6 +48,8 @@ interface Comments {
 const ItemDetialsPage = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [comments, setComments] = useState<Comments | null>(null);
+  const [commentValue, setCommentValue] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
   const currentCursor = useRef<number | null>(0);
   const location = useLocation();
   const { id }: { id: number } = location.state;
@@ -49,7 +59,7 @@ const ItemDetialsPage = () => {
     cursor: currentCursor.current,
   };
 
-  const handleLoadProduct = async () => {
+  const handleLoadProduct = useCallback(async () => {
     const data: Product = await getProductById(id);
 
     if (!data) {
@@ -57,9 +67,9 @@ const ItemDetialsPage = () => {
     }
 
     setProduct((prev) => data);
-  };
+  }, [id]);
 
-  const handleLoadComments = async () => {
+  const handleLoadComments = useCallback(async () => {
     if (currentCursor.current === null) {
       return;
     }
@@ -81,12 +91,20 @@ const ItemDetialsPage = () => {
       });
     }
     currentCursor.current = data.nextCursor;
-  };
+  }, [id]);
 
   useEffect(() => {
     handleLoadProduct();
     handleLoadComments();
-  }, []);
+  }, [handleLoadProduct, handleLoadComments]);
+
+  useEffect(() => {
+    if (commentValue) {
+      setIsDisabled((prev) => false);
+    } else {
+      setIsDisabled((prev) => true);
+    }
+  }, [commentValue]);
 
   if (!product) {
     return;
@@ -94,6 +112,28 @@ const ItemDetialsPage = () => {
   return (
     <>
       <ProductInfo {...product} />
+      <div>
+        <h5>문의하기</h5>
+        <Link to="/items" className={clsx("btn primary-btn")}>
+          목록으로 돌아가기 ↩
+        </Link>
+      </div>
+      <textarea
+        value={commentValue}
+        placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사항 책임은 게시자에게 있습니다."
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+          setCommentValue((prev) => e.target.value);
+        }}
+      />
+      <button
+        className={clsx("btn primary-btn", {
+          disabled: isDisabled,
+        })}
+        disabled={isDisabled}
+        type="button"
+      >
+        등록
+      </button>
       {comments?.list.map((comment: Comment): ReactNode => {
         return <div key={comment.id}>{comment.content}</div>;
       })}

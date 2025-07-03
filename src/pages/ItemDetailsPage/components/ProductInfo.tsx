@@ -3,8 +3,9 @@ import type { Product } from "../ItemDetailsPage";
 import formatNumber from "@/utils/formatNumber";
 import profileImg from "@/assets/icons/ic_profile.svg";
 import heartIcon from "@/assets/icons/ic_heart.svg";
-import kebabIcon from "@/assets/icons/ic_kebab.svg";
 import DropDown from "@/common/DropDown";
+import UpdateDeleteDropdown from "./UpdateDeleteDropdown";
+import formatDate from "@/utils/formatDate";
 
 const ProductInfo = ({
   createdAt,
@@ -28,10 +29,7 @@ const ProductInfo = ({
       <div>
         <div>
           {name}
-          <DropDown imgSrc={kebabIcon} clickableArea={24}>
-            <div>수정하기</div>
-            <div>삭제하기</div>
-          </DropDown>
+          <UpdateDeleteDropdown />
         </div>
         <div>{formatNumber(price)}원</div>
         <hr />
@@ -45,7 +43,7 @@ const ProductInfo = ({
           <img src={profileImg} alt="프로필 이미지" />
           <div>
             <div>{ownerNickname}</div>
-            <div>{createdAt}</div>
+            <div>{formatDate(createdAt)}</div>
           </div>
           <button>
             <img src={heartIcon} alt="관심상품 하트 아이콘" />
