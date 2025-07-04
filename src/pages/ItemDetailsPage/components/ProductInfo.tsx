@@ -1,9 +1,8 @@
 import { useRef } from "react";
-import type { Product } from "../ItemDetailsPage";
+import type { IProduct } from "../ItemDetailsPage";
 import formatNumber from "@/utils/formatNumber";
 import profileImg from "@/assets/icons/ic_profile.svg";
 import heartIcon from "@/assets/icons/ic_heart.svg";
-import DropDown from "@/common/DropDown";
 import UpdateDeleteDropdown from "./UpdateDeleteDropdown";
 import formatDate from "@/utils/formatDate";
 
@@ -20,7 +19,7 @@ const ProductInfo = ({
   name,
   id,
   isFavorite,
-}: Product) => {
+}: IProduct) => {
   const tagId = useRef(0);
 
   return (

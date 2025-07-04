@@ -10,10 +10,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getProductById, getComments } from "@/api";
 import ProductInfo from "./components/ProductInfo";
 import clsx from "clsx";
+import CommentsList from "./components/CommentsList";
 
-const COMMENTS_LIMIT = 5;
+const COMMENTS_LIMIT = 50;
 
-export interface Product {
+export interface IProduct {
   createdAt: string;
   updatedAt: string;
   favoriteCount: number;
@@ -28,7 +29,7 @@ export interface Product {
   isFavorite: boolean;
 }
 
-interface Comment {
+export interface IComment {
   writer: {
     image: string;
     nickname: string;
@@ -40,14 +41,14 @@ interface Comment {
   id: number;
 }
 
-interface Comments {
+export interface IComments {
   nextCursor: number | null;
-  list: Comment[];
+  list: IComment[];
 }
 
 const ItemDetialsPage = () => {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [comments, setComments] = useState<Comments | null>(null);
+  const [product, setProduct] = useState<IProduct | null>(null);
+  const [comments, setComments] = useState<IComments | null>(null);
   const [commentValue, setCommentValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const currentCursor = useRef<number | null>(0);
@@ -60,7 +61,7 @@ const ItemDetialsPage = () => {
   };
 
   const handleLoadProduct = useCallback(async () => {
-    const data: Product = await getProductById(id);
+    const data: IProduct = await getProductById(id);
 
     if (!data) {
       return;
@@ -74,7 +75,7 @@ const ItemDetialsPage = () => {
       return;
     }
 
-    const data: Comments = await getComments(commentsQuery);
+    const data: IComments = await getComments(commentsQuery);
 
     if (!data) {
       return;
@@ -83,7 +84,7 @@ const ItemDetialsPage = () => {
     if (currentCursor.current === 0) {
       setComments((prev) => data);
     } else {
-      setComments((prev): Comments => {
+      setComments((prev): IComments => {
         return {
           nextCursor: data.nextCursor,
           list: [...prev!.list, ...data.list],
@@ -106,7 +107,7 @@ const ItemDetialsPage = () => {
     }
   }, [commentValue]);
 
-  if (!product) {
+  if (!product || comments?.nextCursor === undefined) {
     return;
   }
   return (
@@ -134,16 +135,7 @@ const ItemDetialsPage = () => {
       >
         등록
       </button>
-      {comments?.list.map((comment: Comment): ReactNode => {
-        return <div key={comment.id}>{comment.content}</div>;
-      })}
-      <button
-        onClick={() => {
-          handleLoadComments();
-        }}
-      >
-        zmfflr
-      </button>
+      <CommentsList {...comments} currentCursor={currentCursor} />
     </>
   );
 };
