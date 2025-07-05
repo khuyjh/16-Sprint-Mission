@@ -114,12 +114,13 @@ const ItemDetialsPage = () => {
     <>
       <ProductInfo {...product} />
       <div>
-        <h5>문의하기</h5>
+        <label htmlFor="commentArea">문의하기</label>
         <Link to="/items" className={clsx("btn primary-btn")}>
           목록으로 돌아가기 ↩
         </Link>
       </div>
       <textarea
+        id="commentArea"
         value={commentValue}
         placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사항 책임은 게시자에게 있습니다."
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
