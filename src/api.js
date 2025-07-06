@@ -43,11 +43,7 @@ export const getProductById = async (productId) => {
   }
 };
 
-export const getComments = async ({
-  productId = "recent",
-  limit = INITIAL_PAGE,
-  cursor = 0,
-}) => {
+export const getComments = async ({ productId, limit, cursor = 0 }) => {
   try {
     const response = await instance.get(`/products/${productId}/comments`, {
       params: {

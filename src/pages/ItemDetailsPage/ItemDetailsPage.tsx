@@ -11,8 +11,9 @@ import { getProductById, getComments } from "@/api";
 import ProductInfo from "./components/ProductInfo";
 import clsx from "clsx";
 import CommentsList from "./components/CommentsList";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
-const COMMENTS_LIMIT = 50;
+const COMMENTS_LIMIT = 5;
 
 export interface IProduct {
   createdAt: string;
@@ -51,16 +52,19 @@ const ItemDetialsPage = () => {
   const [comments, setComments] = useState<IComments | null>(null);
   const [commentValue, setCommentValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  const currentCursor = useRef<number | null>(0);
+  const intersectionTargetRef = useIntersectionObserver(
+    handleLoadMoreComments,
+    1
+  );
   const location = useLocation();
   const { id }: { id: number } = location.state;
   const commentsQuery = {
     productId: id,
     limit: COMMENTS_LIMIT,
-    cursor: currentCursor.current,
+    cursor: comments?.nextCursor,
   };
 
-  const handleLoadProduct = useCallback(async () => {
+  const loadInitialProduct = async () => {
     const data: IProduct = await getProductById(id);
 
     if (!data) {
@@ -68,36 +72,43 @@ const ItemDetialsPage = () => {
     }
 
     setProduct((prev) => data);
-  }, [id]);
+  };
 
-  const handleLoadComments = useCallback(async () => {
-    if (currentCursor.current === null) {
+  const loadInitialComments = async () => {
+    if (comments?.nextCursor === null) {
       return;
     }
-
     const data: IComments = await getComments(commentsQuery);
 
     if (!data) {
       return;
     }
 
-    if (currentCursor.current === 0) {
-      setComments((prev) => data);
-    } else {
-      setComments((prev): IComments => {
-        return {
-          nextCursor: data.nextCursor,
-          list: [...prev!.list, ...data.list],
-        };
-      });
+    setComments((prev) => data);
+  };
+
+  async function handleLoadMoreComments() {
+    if (comments?.nextCursor === null) {
+      return;
     }
-    currentCursor.current = data.nextCursor;
-  }, [id]);
+    const data: IComments = await getComments(commentsQuery);
+
+    if (!data) {
+      return;
+    }
+
+    setComments((prev) => {
+      return {
+        nextCursor: data.nextCursor,
+        list: [...prev!.list, ...data.list],
+      };
+    });
+  }
 
   useEffect(() => {
-    handleLoadProduct();
-    handleLoadComments();
-  }, [handleLoadProduct, handleLoadComments]);
+    loadInitialProduct();
+    loadInitialComments();
+  }, []);
 
   useEffect(() => {
     if (commentValue) {
@@ -136,7 +147,12 @@ const ItemDetialsPage = () => {
       >
         등록
       </button>
-      <CommentsList {...comments} currentCursor={currentCursor} />
+      <CommentsList {...comments} />
+      <div ref={intersectionTargetRef}>
+        문의 사항 무한스크롤 감지 element
+        <br />
+        <br />d
+      </div>
     </>
   );
 };

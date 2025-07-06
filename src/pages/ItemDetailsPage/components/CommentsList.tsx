@@ -3,11 +3,7 @@ import { type ReactNode, type RefObject } from "react";
 import noCommentsImg from "@/assets/img/img_no_comments.png";
 import Comment from "./Comment";
 
-interface Props extends IComments {
-  currentCursor: RefObject<number | null>;
-}
-
-const CommentsList = ({ nextCursor, list, currentCursor }: Props) => {
+const CommentsList = ({ nextCursor, list }: IComments) => {
   return (
     <div>
       {list[0] ? (

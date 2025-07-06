@@ -3,7 +3,8 @@ import kebabIcon from "@/assets/icons/ic_kebab.svg";
 import React, { useState, type SetStateAction } from "react";
 
 interface Props {
-  onEdit: React.Dispatch<SetStateAction<boolean>>;
+  onEdit?: React.Dispatch<SetStateAction<boolean>>;
+  //상품 정보 수정 기능은 없기 때문에 임시로 optional 처리
 }
 
 const UpdateDeleteDropdown = ({ onEdit }: Props) => {
@@ -12,6 +13,10 @@ const UpdateDeleteDropdown = ({ onEdit }: Props) => {
       <ul>
         <li
           onClick={() => {
+            //optional type에 따른 타입 가드
+            if (!onEdit) {
+              return;
+            }
             onEdit((prev) => true);
           }}
         >
