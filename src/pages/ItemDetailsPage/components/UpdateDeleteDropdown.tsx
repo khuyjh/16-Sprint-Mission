@@ -1,6 +1,7 @@
+import styles from "./UpdateDeleteDropdown.module.css";
 import DropDown from "@/common/DropDown";
 import kebabIcon from "@/assets/icons/ic_kebab.svg";
-import React, { useState, type SetStateAction } from "react";
+import React, { type SetStateAction } from "react";
 
 interface Props {
   onEdit?: React.Dispatch<SetStateAction<boolean>>;
@@ -9,9 +10,10 @@ interface Props {
 
 const UpdateDeleteDropdown = ({ onEdit }: Props) => {
   return (
-    <DropDown imgSrc={kebabIcon} clickableArea={24}>
-      <ul>
+    <DropDown imgSrc={kebabIcon} clickableWidth={24} clickableHeight={24}>
+      <ul className={styles.dropdownMenu}>
         <li
+          className={styles.firstOption}
           onClick={() => {
             //optional type에 따른 타입 가드
             if (!onEdit) {
@@ -22,7 +24,7 @@ const UpdateDeleteDropdown = ({ onEdit }: Props) => {
         >
           수정하기
         </li>
-        <li>삭제하기</li>
+        <li className={styles.secondOption}>삭제하기</li>
       </ul>
     </DropDown>
   );

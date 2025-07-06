@@ -1,13 +1,7 @@
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type ChangeEvent,
-  type ReactNode,
-} from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState, type ChangeEvent } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { getProductById, getComments } from "@/api";
+import styles from "./ItemDetailsPage.module.css";
 import ProductInfo from "./components/ProductInfo";
 import clsx from "clsx";
 import CommentsList from "./components/CommentsList";
@@ -54,7 +48,7 @@ const ItemDetialsPage = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const intersectionTargetRef = useIntersectionObserver(
     handleLoadMoreComments,
-    1
+    0.7
   );
   const location = useLocation();
   const { id }: { id: number } = location.state;
@@ -122,15 +116,22 @@ const ItemDetialsPage = () => {
     return;
   }
   return (
-    <>
+    <section className={styles.container}>
       <ProductInfo {...product} />
-      <div>
-        <label htmlFor="commentArea">문의하기</label>
-        <Link to="/items" className={clsx("btn primary-btn")}>
+      <hr />
+      <div className={styles.returnButtonContainer}>
+        <label className={styles.commentLabel} htmlFor="commentArea">
+          문의하기
+        </label>
+        <Link
+          to="/items"
+          className={clsx("btn primary-btn", styles.returnButton)}
+        >
           목록으로 돌아가기 ↩
         </Link>
       </div>
       <textarea
+        className={styles.comment}
         id="commentArea"
         value={commentValue}
         placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사항 책임은 게시자에게 있습니다."
@@ -138,22 +139,25 @@ const ItemDetialsPage = () => {
           setCommentValue((prev) => e.target.value);
         }}
       />
-      <button
-        className={clsx("btn primary-btn", {
-          disabled: isDisabled,
-        })}
-        disabled={isDisabled}
-        type="button"
-      >
-        등록
-      </button>
-      <CommentsList {...comments} />
-      <div ref={intersectionTargetRef}>
-        문의 사항 무한스크롤 감지 element
-        <br />
-        <br />d
+      <div className={styles.addButtonWrapper}>
+        <button
+          className={clsx("btn primary-btn", styles.addButton, {
+            disabled: isDisabled,
+          })}
+          disabled={isDisabled}
+          type="button"
+        >
+          등록
+        </button>
       </div>
-    </>
+      <CommentsList {...comments} />
+      <div
+        className={styles.commentObservationTarget}
+        ref={intersectionTargetRef}
+      >
+        문의 사항 무한스크롤 감지 element
+      </div>
+    </section>
   );
 };
 

@@ -3,11 +3,17 @@ import { type ReactNode } from "react";
 
 interface Props {
   imgSrc: string;
-  clickableArea: number;
+  clickableWidth: number;
+  clickableHeight: number;
   children: ReactNode;
 }
 
-const DropDown = ({ imgSrc, clickableArea, children }: Props) => {
+const DropDown = ({
+  imgSrc,
+  clickableWidth,
+  clickableHeight,
+  children,
+}: Props) => {
   const {
     isDropdownOpen,
     setIsDropdownOpen,
@@ -20,14 +26,18 @@ const DropDown = ({ imgSrc, clickableArea, children }: Props) => {
         className="btn"
         type="button"
         ref={dropdownButtonRef}
-        style={{ width: `${clickableArea}px`, position: "relative" }}
+        style={{
+          width: `${clickableWidth}px`,
+          height: `${clickableHeight}px`,
+          position: "relative",
+        }}
         onClick={() => {
           setIsDropdownOpen((prev) => !prev);
         }}
       >
         <img src={imgSrc} alt="드롭다운 메뉴 아이콘" />
+        {isDropdownOpen ? <div ref={dropdownMenuRef}>{children}</div> : null}
       </button>
-      {isDropdownOpen ? <div ref={dropdownMenuRef}>{children}</div> : null}
     </>
   );
 };

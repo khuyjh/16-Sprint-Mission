@@ -1,0 +1,74 @@
+.editingComment {
+  width: 100%;
+  height: 80px;
+  border: none;
+  border-radius: 12px;
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-md);
+  background-color: var(--color-input);
+  resize: none;
+  font-family: var(--font-primary);
+}
+
+.buttonsContainer {
+  position: relative;
+}
+
+.cancelButton {
+  position: absolute;
+  right: 112px;
+  bottom: -36px;
+  width: 60px;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--color-text-grey500);
+  background-color: var(--color-text-light);
+}
+
+.cancelButton:hover {
+  background-color: var(--color-text-grey300);
+}
+
+.updateButton {
+  position: absolute;
+  right: 0;
+  bottom: -36px;
+  width: 106px;
+  height: 42px;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.dropdownContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-lg);
+}
+
+.writerProfile {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: 12px;
+}
+
+.writerImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+}
+
+.writerNickname {
+  color: var(--color-text-grey600);
+}
+
+.date {
+  color: var(--color-text-grey400);
+}
+
+.commentContainer hr {
+  margin-top: 12px;
+}
