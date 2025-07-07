@@ -56,7 +56,7 @@ const Comment = ({ writer, updatedAt, createdAt, content, id }: IComment) => {
         />
         <div>
           <div className={styles.writerNickname}>{writer.nickname}</div>
-          <div className={styles.date}>{calcTimeFromNow(createdAt)}</div>
+          <div className={styles.date}>{calcTimeFromNow(updatedAt)}</div>
         </div>
       </div>
       <hr />
