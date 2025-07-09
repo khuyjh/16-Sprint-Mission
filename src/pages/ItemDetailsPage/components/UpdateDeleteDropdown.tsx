@@ -16,10 +16,7 @@ const UpdateDeleteDropdown = ({ onEdit }: Props) => {
           className={styles.firstOption}
           onClick={() => {
             //optional type에 따른 타입 가드
-            if (!onEdit) {
-              return;
-            }
-            onEdit((prev) => true);
+            onEdit?.(true);
           }}
         >
           수정하기

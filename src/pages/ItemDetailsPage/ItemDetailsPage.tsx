@@ -52,11 +52,6 @@ const ItemDetialsPage = () => {
   );
   const location = useLocation();
   const { id }: { id: number } = location.state;
-  const commentsQuery = {
-    productId: id,
-    limit: COMMENTS_LIMIT,
-    cursor: comments?.nextCursor,
-  };
 
   const loadInitialProduct = async () => {
     const data: IProduct = await getProductById(id);
@@ -65,26 +60,39 @@ const ItemDetialsPage = () => {
       return;
     }
 
-    setProduct((prev) => data);
+    setProduct(data);
   };
 
   const loadInitialComments = async () => {
     if (comments?.nextCursor === null) {
       return;
     }
-    const data: IComments = await getComments(commentsQuery);
+
+    const initialCommentsQuery = {
+      productId: id,
+      limit: COMMENTS_LIMIT,
+    };
+
+    const data: IComments = await getComments(initialCommentsQuery);
 
     if (!data) {
       return;
     }
 
-    setComments((prev) => data);
+    setComments(data);
   };
 
   async function handleLoadMoreComments() {
     if (comments?.nextCursor === null) {
       return;
     }
+
+    const commentsQuery = {
+      productId: id,
+      limit: COMMENTS_LIMIT,
+      cursor: comments?.nextCursor,
+    };
+
     const data: IComments = await getComments(commentsQuery);
 
     if (!data) {
@@ -106,15 +114,16 @@ const ItemDetialsPage = () => {
 
   useEffect(() => {
     if (commentValue) {
-      setIsDisabled((prev) => false);
+      setIsDisabled(false);
     } else {
-      setIsDisabled((prev) => true);
+      setIsDisabled(true);
     }
   }, [commentValue]);
 
   if (!product || comments?.nextCursor === undefined) {
     return;
   }
+
   return (
     <section className={styles.container}>
       <ProductInfo {...product} />

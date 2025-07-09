@@ -15,7 +15,7 @@ const useDropdown = () => {
         !dropdownButtonRef.current?.contains(e.target) &&
         !dropdownMenuRef.current?.contains(e.target)
       ) {
-        setIsDropdownOpen((prev) => false);
+        setIsDropdownOpen(false);
       }
     },
     [isDropdownOpen]

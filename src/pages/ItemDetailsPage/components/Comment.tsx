@@ -5,6 +5,7 @@ import UpdateDeleteDropdown from "./UpdateDeleteDropdown";
 import profileImg from "@/assets/icons/ic_profile.svg";
 import calcTimeFromNow from "@/utils/calcTimeFormNow";
 import clsx from "clsx";
+import CommentEditor from "./CommentEditor";
 
 const Comment = ({ writer, updatedAt, createdAt, content, id }: IComment) => {
   const [commentValue, setCommentValue] = useState(content);
@@ -13,35 +14,11 @@ const Comment = ({ writer, updatedAt, createdAt, content, id }: IComment) => {
   return (
     <div className={styles.commentContainer}>
       {isEditing ? (
-        <div className={styles.buttonsContainer}>
-          <textarea
-            className={styles.editingComment}
-            value={commentValue}
-            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-              setCommentValue((prev) => e.target.value);
-            }}
-          />
-          <div>
-            <button
-              className={clsx("btn", styles.cancelButton)}
-              type="button"
-              onClick={() => {
-                setIsEditing((prev) => false);
-              }}
-            >
-              취소
-            </button>
-            <button
-              className={clsx("btn primary-btn", styles.updateButton)}
-              type="button"
-              onClick={() => {
-                setIsEditing((prev) => false);
-              }}
-            >
-              수정 완료
-            </button>
-          </div>
-        </div>
+        <CommentEditor
+          commentValue={commentValue}
+          onChangeCommentValue={setCommentValue}
+          onClickIsEditing={setIsEditing}
+        />
       ) : (
         <div className={styles.dropdownContainer}>
           <span>{content}</span>

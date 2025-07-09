@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const useIntersectionObserver = (
-  onIntersect: Function = () => {},
+  onIntersect: () => void,
   threshold: number = 0.7
 ) => {
   const targetRef = useRef(null);

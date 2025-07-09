@@ -1,4 +1,19 @@
-import axios from "axios";
+import axios, { type AxiosRequestConfig } from "axios";
+import { type IProduct } from "./pages/ItemDetailsPage/ItemDetailsPage";
+
+interface APIResponse<T> {
+  status: number;
+  errorCode: number;
+  message: string;
+  result: T;
+  timestamp: Date;
+}
+
+interface ICommentsQuery {
+  productId: number;
+  limit: number;
+  cursor?: number | null;
+}
 
 // const BASE_URL = "https://panda-market-api.vercel.app/";
 const INITIAL_PAGE = 1;
@@ -9,12 +24,12 @@ const instance = axios.create({
   timeout: 5000,
 });
 
-export const getProducts = async ({
+export const getProducts = async <T>({
   orderBy = "recent",
   currentPage = INITIAL_PAGE,
   pageSize = MOBILE_DEFAULT_PAGE_SIZE,
   keyword = "",
-}) => {
+}): Promise<APIResponse<T>> => {
   try {
     const response = await instance.get("/products", {
       params: {
@@ -32,7 +47,9 @@ export const getProducts = async ({
   }
 };
 
-export const getProductById = async (productId) => {
+export const getProductById = async <IProduct>(
+  productId: number
+): Promise<APIResponse<IProduct>> => {
   try {
     const response = await instance.get(`/products/${productId}`);
 
@@ -43,7 +60,11 @@ export const getProductById = async (productId) => {
   }
 };
 
-export const getComments = async ({ productId, limit, cursor = 0 }) => {
+export const getComments = async <T>({
+  productId,
+  limit,
+  cursor = 0,
+}: ICommentsQuery): Promise<APIResponse<T>> => {
   try {
     const response = await instance.get(`/products/${productId}/comments`, {
       params: {
