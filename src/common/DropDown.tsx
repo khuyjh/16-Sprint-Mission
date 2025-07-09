@@ -1,5 +1,6 @@
-import useDropdown from "@/hooks/useDropdown";
-import { type ReactNode } from "react";
+import useOutsideClick from "@/hooks/useOutsideClick";
+import useDropdown from "@/hooks/useOutsideClick";
+import { useRef, useState, type ReactNode } from "react";
 
 interface Props {
   imgSrc: string;
@@ -14,12 +15,15 @@ const DropDown = ({
   clickableHeight,
   children,
 }: Props) => {
-  const {
-    isDropdownOpen,
-    setIsDropdownOpen,
-    dropdownButtonRef,
-    dropdownMenuRef,
-  } = useDropdown();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownButtonRef = useRef<HTMLButtonElement | null>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement | null>(null);
+
+  useOutsideClick([dropdownButtonRef, dropdownMenuRef], {
+    isActive: isDropdownOpen,
+    onOutsideClick: () => setIsDropdownOpen(false),
+  });
+
   return (
     <>
       <button
