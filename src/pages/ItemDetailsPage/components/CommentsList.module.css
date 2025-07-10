@@ -1,0 +1,13 @@
+.noCommentsImg {
+  display: block;
+  width: 196px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* desktop size */
+@media screen and (min-width: 1200px) {
+  .noCommentsImg {
+    width: 240px;
+  }
+}
