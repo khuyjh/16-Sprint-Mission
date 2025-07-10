@@ -1,20 +1,16 @@
 import useOutsideClick from "@/hooks/useOutsideClick";
-import useDropdown from "@/hooks/useOutsideClick";
+import clsx from "clsx";
+import styles from "./DropDown.module.css";
 import { useRef, useState, type ReactNode } from "react";
 
 interface Props {
   imgSrc: string;
-  clickableWidth: number;
-  clickableHeight: number;
+  // 버튼 종류에 따른 클릭영역을 css className으로 전달
+  buttonType: "kebab";
   children: ReactNode;
 }
 
-const DropDown = ({
-  imgSrc,
-  clickableWidth,
-  clickableHeight,
-  children,
-}: Props) => {
+const DropDown = ({ imgSrc, buttonType, children }: Props) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownButtonRef = useRef<HTMLButtonElement | null>(null);
   const dropdownMenuRef = useRef<HTMLDivElement | null>(null);
@@ -27,12 +23,10 @@ const DropDown = ({
   return (
     <>
       <button
-        className="btn"
+        className={clsx("btn", styles[`${buttonType}`])}
         type="button"
         ref={dropdownButtonRef}
         style={{
-          width: `${clickableWidth}px`,
-          height: `${clickableHeight}px`,
           position: "relative",
         }}
         onClick={() => {

@@ -10,7 +10,7 @@ interface Props {
 
 const UpdateDeleteDropdown = ({ onEdit }: Props) => {
   return (
-    <DropDown imgSrc={kebabIcon} clickableWidth={24} clickableHeight={24}>
+    <DropDown imgSrc={kebabIcon} buttonType="kebab">
       <ul className={styles.dropdownMenu}>
         <li
           className={styles.firstOption}
