@@ -22,15 +22,17 @@ const Hero = () => {
             일상의 모든 물건을 <br className="md:hidden" />
             거래해보세요
           </h2>
-          <button
-            className="btn primary-btn text-[18px] w-[240px] h-[48px] px-14 py-3 rounded-[40px] leading-none
+          <Link to="/items">
+            <button
+              className="btn primary-btn text-[18px] w-[240px] h-[48px] px-14 py-3 rounded-[40px] leading-none
           md:text-[20px] md:w-[357px] md:h-[56px] md:px-30 md:py-4
           xl:mb-[60px]"
-            type="button"
-            aria-label="중고마켓 페이지 이동 버튼"
-          >
-            <Link to="/items">구경하러 가기</Link>
-          </button>
+              type="button"
+              aria-label="중고마켓 페이지 이동 버튼"
+            >
+              구경하러 가기
+            </button>
+          </Link>
         </div>
         <img
           className="w-[100%]"

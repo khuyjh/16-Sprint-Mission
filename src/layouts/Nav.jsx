@@ -33,12 +33,14 @@ const Nav = () => {
             <Link to={"/items"}>중고마켓</Link>
           </button>
         </div>
-        <button
-          className={`btn primary-btn ${styles["login-btn"]}`}
-          type="button"
-        >
-          <Link to="/login">로그인</Link>
-        </button>
+        <Link to="/login">
+          <button
+            className={`btn primary-btn ${styles["login-btn"]}`}
+            type="button"
+          >
+            로그인
+          </button>
+        </Link>
       </nav>
       <main>
         <Outlet />
