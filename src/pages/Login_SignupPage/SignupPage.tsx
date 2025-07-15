@@ -14,7 +14,7 @@ interface ISignupData extends ILoginData {
 
 const SignupPage = () => {
   const [isValidating, setIsValidating] = useState(false);
-  const [hasError, setHasError] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(true);
   const signupData = useRef<ISignupData>({
     email: "",
     nickname: "",
@@ -50,9 +50,17 @@ const SignupPage = () => {
   }, [isValidating, hasError]);
 
   return (
-    <section>
+    <section
+      className="pt-20 pb-45 px-md
+    md:w-160 md:mx-auto md:pt-48 md:px-0"
+    >
       <Link to="/">
-        <img src={logo} alt="판다마켓 로고" />
+        <img
+          className="mx-auto mb-lg
+        md:w-99 md:h-33 md:mb-10"
+          src={logo}
+          alt="판다마켓 로고"
+        />
       </Link>
       <FieldUncontrolled {...fieldMap.email} {...commonFieldProps} />
       <FieldUncontrolled {...fieldMap.nickname} {...commonFieldProps} />
@@ -72,10 +80,12 @@ const SignupPage = () => {
         회원가입
       </button>
       <SocialLogin />
-      <span>
+      <div className="text-text-grey800 text-[14px] text-center font-medium">
         이미 회원이신가요?
-        <Link to="/login">로그인</Link>
-      </span>
+        <Link className="text-primary border-b-[1.5px] pb-[0.5px]" to="/login">
+          로그인
+        </Link>
+      </div>
     </section>
   );
 };

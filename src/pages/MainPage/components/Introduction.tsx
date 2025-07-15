@@ -41,7 +41,7 @@ const Introduction = ({
           {title}
         </div>
         <div
-          className="font-semibold whitespace-pre-wrap
+          className="font-medium whitespace-pre-wrap
         md:text-lg"
         >
           {description}

@@ -20,30 +20,34 @@ export const fieldMap = {
     id: "email",
     label: "이메일",
     type: "email",
+    placeholder: "이메일을 입력해주세요",
     validator: validateEmail,
   },
   nickname: {
     id: "nickname",
     label: "닉네임",
     type: "text",
+    placeholder: "닉네임을 입력해주세요",
   },
   password: {
     id: "password",
     label: "비밀번호",
     type: "password",
+    placeholder: "비밀번호를 입력해주세요",
     validator: validatePassword,
   },
   passwordCheck: {
     id: "passwordCheck",
     label: "비밀번호 확인",
     type: "password",
+    placeholder: "비밀번호를 입력해주세요",
     validator: validatePasswordCheck,
   },
 } as const;
 
 const LoginPage = () => {
   const [isValidating, setIsValidating] = useState(false);
-  const [hasError, setHasError] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(true);
   const loginData = useRef<ILoginData>({ email: "", password: "" });
   const isMount = useRef(true);
   const navigate = useNavigate();
@@ -74,15 +78,23 @@ const LoginPage = () => {
   }, [isValidating, hasError]);
 
   return (
-    <section>
+    <section
+      className="pt-20 pb-45 px-md
+    md:w-160 md:mx-auto md:pt-48 md:px-0"
+    >
       <Link to="/">
-        <img src={logo} alt="판다마켓 로고" />
+        <img
+          className="mx-auto mb-lg
+        md:w-99 md:h-33 md:mb-10"
+          src={logo}
+          alt="판다마켓 로고"
+        />
       </Link>
       <FieldUncontrolled {...fieldMap.email} {...commonFieldProps} />
       <FieldUncontrolled {...fieldMap.password} {...commonFieldProps} />
       <button
         className={clsx(
-          "btn primary-btn w-[100%] h-14 rounded-[40px] text-[20px]"
+          "btn primary-btn w-full h-14 rounded-[40px] text-[20px]"
         )}
         type="button"
         onClick={handleStartValidation}
@@ -90,10 +102,12 @@ const LoginPage = () => {
         로그인
       </button>
       <SocialLogin />
-      <span>
-        판다마켓이 처음이신가요?
-        <Link to="/signup">회원가입</Link>
-      </span>
+      <div className="text-text-grey800 text-[14px] text-center font-medium">
+        판다마켓이 처음이신가요?&nbsp;
+        <Link className="text-primary border-b-[1.5px] pb-[0.5px]" to="/signup">
+          회원가입
+        </Link>
+      </div>
     </section>
   );
 };

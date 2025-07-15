@@ -3,6 +3,7 @@ import visibilityOff from "@/assets/icons/ic_visibility_off.svg";
 import isEmpty from "@/utils/isEmpty";
 import { type ILoginData } from "../LoginPage";
 import React, { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
 type SingleParamValidator = (value: string) => {
   isValid: boolean;
@@ -17,6 +18,7 @@ interface Props {
   id: string;
   label: string;
   type: "email" | "text" | "password";
+  placeholder: string;
   validator?: SingleParamValidator | TwoParamValidator;
   formData: ILoginData;
   validationTrigger: boolean;
@@ -30,6 +32,7 @@ const FieldUncontrolled = ({
   id,
   label,
   type,
+  placeholder,
   validator,
   formData,
   validationTrigger,
@@ -42,7 +45,6 @@ const FieldUncontrolled = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const isMount = useRef(true);
   const isPassword = type === "password";
-  const placeholderMsg = `${label}을(를) 입력해주세요`;
 
   const handleChangeValue = () => {
     if (id in formData && inputRef.current) {
@@ -65,7 +67,7 @@ const FieldUncontrolled = ({
 
     if (isEmpty(value)) {
       errorSetter(true);
-      setErrorMsg(placeholderMsg);
+      setErrorMsg(placeholder);
       onCheckValidating(false);
       return;
     }
@@ -101,28 +103,56 @@ const FieldUncontrolled = ({
 
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
-      <div>
+      <label
+        className="text-text-grey800 font-bold text-[14px]
+      md:text-[18px]"
+        htmlFor={id}
+      >
+        {label}
+      </label>
+      <div className="relative">
         <input
+          className={clsx(
+            "bg-text-grey100 w-full h-14 px-lg py-md mt-sm mb-md rounded-[12px] placeholder-shown:text-text-grey400",
+            "md:w-160 md:mt-md md:mb-lg",
+            { "border-[1.5px] border-error-red": errorMsg }
+          )}
           id={id}
           ref={inputRef}
           type={isPassword && isVisibilityOn ? "text" : type}
-          placeholder={placeholderMsg}
+          placeholder={placeholder}
           onChange={handleChangeValue}
+          onFocus={() => {
+            setErrorMsg(null);
+          }}
         />
         {isPassword ? (
           <button
+            className="absolute top-6 right-6
+            md:top-8"
             type="button"
             onClick={() => {
               setIsVisibilityOn((prev) => !prev);
             }}
           >
-            <img src={visibilityOff} alt="비밀번호 숨김 아이콘" />
-            <img src={visibilityOn} alt="비밀번호 표시 아이콘" />
+            <img
+              className={clsx({ hidden: isVisibilityOn })}
+              src={visibilityOff}
+              alt="비밀번호 숨김 아이콘"
+            />
+            <img
+              className={clsx({ hidden: !isVisibilityOn })}
+              src={visibilityOn}
+              alt="비밀번호 표시 아이콘"
+            />
           </button>
         ) : undefined}
       </div>
-      {errorMsg ? <div>{errorMsg}</div> : undefined}
+      {errorMsg ? (
+        <div className="text-error-red text-[14px] font-semibold pl-md -mt-2 mb-[10px]">
+          {errorMsg}
+        </div>
+      ) : undefined}
     </div>
   );
 };

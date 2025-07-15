@@ -33,10 +33,6 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-
-  /* Fonts */
-  --font-weight-bold: 700;
-  --font-weight-regular: 400;
 }
 
 @font-face {
@@ -103,9 +99,4 @@ body {
   line-height: 1.5;
   font-family: var(--font-primary);
   word-break: keep-all;
-}
-
-a {
-  color: unset;
-  text-decoration: none;
 }
