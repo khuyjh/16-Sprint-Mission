@@ -81,7 +81,7 @@ const SignupPage = () => {
       </button>
       <SocialLogin />
       <div className="text-text-grey800 text-[14px] text-center font-medium">
-        이미 회원이신가요?
+        이미 회원이신가요?&nbsp;
         <Link className="text-primary border-b-[1.5px] pb-[0.5px]" to="/login">
           로그인
         </Link>
