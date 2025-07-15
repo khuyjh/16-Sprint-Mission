@@ -1,20 +1,26 @@
 import logo from "@/assets/logo/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FieldUncontrolled from "./components/FieldUncontrolled";
 import SocialLogin from "./components/SocialLogin";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import {
+  validateEmail,
+  validatePassword,
+  validatePasswordCheck,
+} from "@/utils/validations";
 
 export interface ILoginData {
   email: string;
   password: string;
 }
 
-export const FIELD_MAP = {
+export const fieldMap = {
   email: {
     id: "email",
     label: "이메일",
     type: "email",
+    validator: validateEmail,
   },
   nickname: {
     id: "nickname",
@@ -25,61 +31,61 @@ export const FIELD_MAP = {
     id: "password",
     label: "비밀번호",
     type: "password",
+    validator: validatePassword,
   },
   passwordCheck: {
     id: "passwordCheck",
     label: "비밀번호 확인",
     type: "password",
+    validator: validatePasswordCheck,
   },
 } as const;
 
 const LoginPage = () => {
-  // const [isDisabled, setIsDisabled] = useState(true);
+  const [isValidating, setIsValidating] = useState(false);
+  const [hasError, setHasError] = useState<boolean>(false);
   const loginData = useRef<ILoginData>({ email: "", password: "" });
+  const isMount = useRef(true);
+  const navigate = useNavigate();
+  const commonFieldProps = {
+    formData: loginData.current,
+    validationTrigger: isValidating,
+    onCheckValidating: setIsValidating,
+    errorSetter: setHasError,
+  };
 
-  console.log(loginData.current);
+  const handleStartValidation = () => {
+    //검증 시작할 때 hasError->false, 각 필드에서 하나라도 에러있으면 true
+    setIsValidating(true);
+    setHasError(false);
+  };
 
-  // useEffect(() => {
-  //   for (const key in loginData.current) {
-  //     console.log(key);
-  //     if (!loginData.current[key as keyof ILoginData]) {
-  //       console.log(key, loginData.current[key as keyof ILoginData]);
-  //       setIsDisabled(true);
-  //       return;
-  //     }
-  //   }
-  //   setIsDisabled(false);
-  // }, [loginData.current.email, loginData.current.password]);
+  useEffect(() => {
+    if (isMount.current) {
+      isMount.current = false;
+      return;
+    }
 
-  const handleValidateInputs = () => {};
+    if (isValidating || hasError === true) {
+      return;
+    }
+
+    navigate("/");
+  }, [isValidating, hasError]);
 
   return (
     <section>
       <Link to="/">
         <img src={logo} alt="판다마켓 로고" />
       </Link>
-      <FieldUncontrolled
-        id={FIELD_MAP.email.id}
-        label={FIELD_MAP.email.label}
-        type={FIELD_MAP.email.type}
-        formData={loginData.current}
-      />
-      <FieldUncontrolled
-        id={FIELD_MAP.password.id}
-        label={FIELD_MAP.password.label}
-        type={FIELD_MAP.password.type}
-        formData={loginData.current}
-      />
+      <FieldUncontrolled {...fieldMap.email} {...commonFieldProps} />
+      <FieldUncontrolled {...fieldMap.password} {...commonFieldProps} />
       <button
         className={clsx(
           "btn primary-btn w-[100%] h-14 rounded-[40px] text-[20px]"
-          // {
-          //   disabled: isDisabled,
-          // }
         )}
         type="button"
-        // disabled={isDisabled}
-        onClick={handleValidateInputs}
+        onClick={handleStartValidation}
       >
         로그인
       </button>
