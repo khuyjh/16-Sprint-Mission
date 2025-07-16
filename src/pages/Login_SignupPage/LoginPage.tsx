@@ -40,7 +40,7 @@ export const fieldMap = {
     id: "passwordCheck",
     label: "비밀번호 확인",
     type: "password",
-    placeholder: "비밀번호를 입력해주세요",
+    placeholder: "비밀번호를 다시 입력해주세요",
     validator: validatePasswordCheck,
   },
 } as const;

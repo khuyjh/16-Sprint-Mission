@@ -11,7 +11,7 @@ type SingleParamValidator = (value: string) => {
 };
 type TwoParamValidator = (
   value: string,
-  comparisonValue: string
+  comparisonValue: string | undefined
 ) => { isValid: boolean; errorMsg: string | null };
 
 interface Props {
@@ -63,7 +63,7 @@ const FieldUncontrolled = ({
       return;
     }
 
-    const value = inputRef.current?.value;
+    const value = inputRef.current!.value;
 
     if (isEmpty(value)) {
       errorSetter(true);
@@ -73,10 +73,7 @@ const FieldUncontrolled = ({
     }
 
     if (validator && id === "passwordCheck") {
-      const { isValid, errorMsg } = validator(
-        value as string,
-        comparisonValue as string
-      );
+      const { isValid, errorMsg } = validator(value, comparisonValue);
 
       if (!isValid) {
         errorSetter(true);
@@ -85,9 +82,7 @@ const FieldUncontrolled = ({
         return;
       }
     } else if (validator) {
-      const { isValid, errorMsg } = (validator as SingleParamValidator)(
-        value as string
-      );
+      const { isValid, errorMsg } = (validator as SingleParamValidator)(value);
 
       if (!isValid) {
         errorSetter(true);
@@ -128,7 +123,7 @@ const FieldUncontrolled = ({
         />
         {isPassword ? (
           <button
-            className="absolute top-6 right-6
+            className="absolute top-6 right-6 cursor-pointer
             md:top-8"
             type="button"
             onClick={() => {

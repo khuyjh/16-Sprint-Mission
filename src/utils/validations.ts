@@ -16,11 +16,12 @@ export const validatePassword = (passwordValue: string) => {
   }
 };
 
+//passwordcheckvalue는 isEmpty로 undefined값이 사전에 필터링
 export const validatePasswordCheck = (
-  passwordValue: string,
-  passwordCheckValue: string
+  passwordCheckValue: string,
+  comparisonValue: string | undefined
 ) => {
-  if (passwordValue !== passwordCheckValue) {
+  if (comparisonValue !== passwordCheckValue) {
     return { isValid: false, errorMsg: "비밀번호가 일치하지 않습니다" };
   } else {
     return { isValid: true, errorMsg: null };
